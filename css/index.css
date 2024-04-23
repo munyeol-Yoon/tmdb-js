@@ -19,3 +19,7 @@ a {
   color: black;
   text-decoration-line: none;
 }
+
+h2 {
+  font-weight: bold;
+}
