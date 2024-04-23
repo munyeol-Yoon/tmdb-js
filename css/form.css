@@ -12,26 +12,3 @@
   outline: none;
   padding: 0 5px 0 5px;
 }
-
-.form-container > form > button {
-  background-color: #63e6be;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.form-container > form > button:hover {
-  background-color: #48c9b0;
-}
-
-.form-container > form > button:active {
-  background-color: #1abc9c;
-}
