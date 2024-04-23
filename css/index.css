@@ -5,6 +5,7 @@
 @import "./header.css";
 @import "./form.css";
 @import "./card.css";
+@import "./modal.css";
 
 *,
 header,
@@ -12,4 +13,9 @@ main {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+a {
+  color: black;
+  text-decoration-line: none;
 }

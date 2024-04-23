@@ -9,6 +9,7 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .card-container-card img {

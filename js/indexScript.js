@@ -50,15 +50,25 @@ function displayFindAllAndSearchResults(response) {
 
     const cardDivElement = document.createElement("div");
     cardDivElement.className = "card-container-card";
-    cardDivElement.id = `${movie.id}`;
+    cardDivElement.id = `card-${movie.id}`;
+
+    let movieObj = {
+      id: movie.id,
+      title: movie.title,
+      img: `https://image.tmdb.org/t/p/w300/${movie.poster_path}`,
+      overview: movie.overview,
+      rating: movie.vote_average,
+    };
+
+    let strMovieObj = JSON.stringify(movieObj);
 
     let card = `
-    <div class="content">
-      <img src="https://image.tmdb.org/t/p/w300/${movie.poster_path}" />
-      <h3>${movie.title}</h3></br>
+    <div class="content" onclick="displayModal(${strMovieObj})">
+      <img src="${movieObj.img}" />
+      <h3>${movieObj.title}</h3></br>
       <div class="text">
-        <p>${movie.overview}</p></br>
-        <p class="rating">Rating : ${movie.vote_average}</p>
+        <p>${movieObj.overview}</p></br>
+        <p class="rating">Rating : ${movieObj.rating}</p>
       </div>
     </div>
     `;
@@ -66,5 +76,25 @@ function displayFindAllAndSearchResults(response) {
     cardDivElement.innerHTML = card;
 
     $cardContainer.appendChild(cardDivElement);
+  });
+}
+
+function displayModal(movieObj) {
+  console.log("asdasdasdasdasdasdas");
+
+  let movie = JSON.parse(movieObj);
+  console.log(movie);
+  const container = document.querySelector(".container");
+  const closeButton = document.querySelector(".close");
+
+  console.log(movieObj);
+
+  $cardContainer.addEventListener("click", (e) => {
+    console.log(e);
+    container.style.display = "flex";
+  });
+
+  closeButton.addEventListener("click", () => {
+    container.style.display = "none";
   });
 }
