@@ -45,6 +45,8 @@ function displayFindAllAndSearchResults(response) {
 
   $cardContainer.innerHTML = "";
 
+  const docFragment = document.createDocumentFragment();
+
   response.results.forEach((movie) => {
     if (!movie.poster_path) return;
 
@@ -60,30 +62,27 @@ function displayFindAllAndSearchResults(response) {
       rating: movie.vote_average,
     };
 
-    let strMovieObj = JSON.stringify(movieObj);
-
     let card = `
-    <div class="content" onclick="displayModal(${strMovieObj})">
+    <div class="content">
       <img src="${movieObj.img}" />
-      <h3>${movieObj.title}</h3></br>
+      <h3>${movieObj.title}</h3><br />
       <div class="text">
-        <p>${movieObj.overview}</p></br>
+        <p>${movieObj.overview}</p><br />
         <p class="rating">Rating : ${movieObj.rating}</p>
       </div>
     </div>
     `;
 
-    cardDivElement.innerHTML = card;
+    cardDivElement.addEventListener("click", () => displayModal(movieObj));
 
-    $cardContainer.appendChild(cardDivElement);
+    cardDivElement.innerHTML = card;
+    docFragment.appendChild(cardDivElement);
   });
+  $cardContainer.appendChild(docFragment);
 }
 
 function displayModal(movieObj) {
-  console.log("asdasdasdasdasdasdas");
-
-  let movie = JSON.parse(movieObj);
-  console.log(movie);
+  console.log("----------------------------");
   const container = document.querySelector(".container");
   const closeButton = document.querySelector(".close");
 
