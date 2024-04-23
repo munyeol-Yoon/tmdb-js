@@ -12,5 +12,20 @@ fetch(
   options
 )
   .then((response) => response.json())
-  .then((response) => console.log(response))
+  .then((response) => {
+    console.log(response);
+    const $cardContainer = document.querySelector(".card-container");
+
+    response.results.forEach((movie) => {
+      const cardDivElement = document.createElement("div");
+
+      let card = `
+        <h1>${movie.title}, ${movie.overview}, ${movie.vote_average}</h1>
+      `;
+
+      cardDivElement.innerHTML = card;
+
+      $cardContainer.appendChild(cardDivElement);
+    });
+  })
   .catch((err) => console.error(err));
