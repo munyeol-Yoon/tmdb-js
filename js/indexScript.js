@@ -18,9 +18,18 @@ fetch(
 
     response.results.forEach((movie) => {
       const cardDivElement = document.createElement("div");
+      cardDivElement.className = "card-container-card";
+      cardDivElement.id = `${movie.id}`;
 
       let card = `
-        <h1>${movie.title}, ${movie.overview}, ${movie.vote_average}</h1>
+      <div class="content">
+        <img src="https://image.tmdb.org/t/p/w300/${movie.poster_path}" />
+        <h3>${movie.title}</h3></br>
+        <div class="text">
+          <p>${movie.overview}</p></br>
+          <p class="rating">Rating : ${movie.vote_average}</p>
+        </div>
+      </div>
       `;
 
       cardDivElement.innerHTML = card;
