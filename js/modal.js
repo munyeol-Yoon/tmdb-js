@@ -1,10 +1,9 @@
 const $cardContainer = document.querySelector(".card-container");
 // const $cardContent = document.querySelector(".content");
+const container = document.querySelector(".container");
 let closeButton;
 
 export function displayModal(movieObj) {
-  const container = document.querySelector(".container");
-
   container.innerHTML = "";
 
   const $modal = document.createElement("div");
@@ -26,13 +25,21 @@ export function displayModal(movieObj) {
   }
 
   closeButton = document.querySelector(".close");
-  closeButton.addEventListener("click", () => {
-    container.style.display = "none";
-  });
+  closeButton.addEventListener("click", hideModal);
 
   $cardContainer.addEventListener("click", () => {
     container.style.display = "flex";
   });
+}
+
+container.addEventListener("click", (e) => {
+  if (e.target === container) {
+    hideModal();
+  }
+});
+
+function hideModal() {
+  container.style.display = "none";
 }
 
 function toggleContainer() {
