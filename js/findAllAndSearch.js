@@ -18,7 +18,7 @@ export function displayFindAllAndSearchResults(response) {
 
     let movieObj = {
       id: movie.id,
-      title: movie.title,
+      title: movie.title ? movie.title : movie.name,
       img: `https://image.tmdb.org/t/p/w300/${movie.poster_path}`,
       overview: movie.overview,
       rating: movie.vote_average,
