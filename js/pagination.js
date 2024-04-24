@@ -1,5 +1,6 @@
 import { options } from "./config.js";
 import { displayFindAllAndSearchResults } from "./findAllAndSearch.js";
+import { categoryStatus } from "./category.js";
 
 const $prevPageBtn = document.querySelector("#prevPage");
 const $nextPageBtn = document.querySelector("#nextPage");
@@ -27,7 +28,7 @@ $nextPageBtn.addEventListener("click", () => {
 function fetchData(page) {
   isFetchingData = true;
   fetch(
-    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`,
+    `https://api.themoviedb.org/3/discover/${categoryStatus}?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`,
     options
   )
     .then((response) => response.json())
@@ -44,4 +45,9 @@ function fetchData(page) {
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+export function resetCurrentPage() {
+  currentPage = 1;
+  $currentPage.textContent = currentPage;
 }
