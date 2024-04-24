@@ -3,7 +3,7 @@ import { displayModal } from "./modal.js";
 const $cardContainer = document.querySelector(".card-container");
 
 export function displayFindAllAndSearchResults(response) {
-  // console.log(response);
+  console.log(response);
 
   $cardContainer.innerHTML = "";
 

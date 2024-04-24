@@ -1,7 +1,20 @@
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 8vh;
   border-bottom: 1px solid #d9d9d9;
+}
+
+header > :nth-child(1) > a:hover {
+  color: #48c9b0;
+}
+
+header > :nth-child(2) > a {
+  padding: 10px;
+  cursor: pointer;
+}
+
+header > :nth-child(2) > a:hover {
+  color: #48c9b0;
 }
