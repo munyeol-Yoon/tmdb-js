@@ -1,6 +1,7 @@
 import { displayModal } from "./modal.js";
 
 const $cardContainer = document.querySelector(".card-container");
+const container = document.querySelector(".container");
 
 export function displayFindAllAndSearchResults(response) {
   console.log(response);
@@ -35,7 +36,10 @@ export function displayFindAllAndSearchResults(response) {
     </div>
     `;
 
-    cardDivElement.addEventListener("click", () => displayModal(movieObj));
+    cardDivElement.addEventListener("click", () => {
+      displayModal(movieObj);
+      container.style.display = "flex";
+    });
 
     cardDivElement.innerHTML = card;
     docFragment.appendChild(cardDivElement);
