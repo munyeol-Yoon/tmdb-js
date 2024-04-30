@@ -1,6 +1,3 @@
-const $cardContainerCard = document.querySelector(".card-container-card");
-// const $cardContainer = document.querySelector(".card-container");
-// const $cardContent = document.querySelector(".content");
 const container = document.querySelector(".container");
 let closeButton;
 
@@ -27,10 +24,6 @@ export function displayModal(movieObj) {
 
   closeButton = document.querySelector(".close");
   closeButton.addEventListener("click", hideModal);
-
-  // $cardContainerCard.addEventListener("click", () => {
-  //   container.style.display = "flex";
-  // });
 }
 
 container.addEventListener("click", (e) => {
