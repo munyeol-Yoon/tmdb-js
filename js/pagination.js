@@ -34,8 +34,13 @@ function fetchData(page) {
     .then((response) => response.json())
     .then((response) => {
       displayFindAllAndSearchResults(response);
+      const totalPages = response.total_pages;
       $currentPage.textContent = page;
       isFetchingData = false;
+
+      if (page === totalPages) {
+        alert("마지막 페이지 입니다.");
+      }
     })
     .catch((err) => {
       console.error(err);
