@@ -40,6 +40,9 @@ function fetchData(page) {
 
       if (page === totalPages) {
         alert("마지막 페이지 입니다.");
+        $nextPageBtn.disabled = true;
+      } else {
+        $nextPageBtn.disabled = false;
       }
     })
     .catch((err) => {
