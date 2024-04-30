@@ -4,8 +4,6 @@ const $cardContainer = document.querySelector(".card-container");
 const container = document.querySelector(".container");
 
 export function displayFindAllAndSearchResults(response) {
-  console.log(response);
-
   $cardContainer.innerHTML = "";
 
   const docFragment = document.createDocumentFragment();
