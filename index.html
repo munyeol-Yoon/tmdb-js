@@ -7,6 +7,7 @@
     <title>Movie</title>
   </head>
   <body>
+    <!-- 헤더부분입니다.  -->
     <header>
       <div>
         <a href="./index.html">MY Flix</a>
@@ -17,6 +18,7 @@
       </div>
     </header>
     <main>
+      <!-- 검색하는 부분입니다. -->
       <div class="form-container">
         <form class="search-form">
           <label for="movie-search">Search : </label>
@@ -25,8 +27,10 @@
         </form>
       </div>
 
+      <!-- card 가 들어가는 부분입니다. -->
       <section class="card-container"></section>
 
+      <!-- 모달 부분입니다. -->
       <div class="container">
         <div class="modal">
           <h2>영화 제목</h2>
@@ -35,12 +39,14 @@
         </div>
       </div>
 
+      <!-- 페이지네이션 부분입니다. 현재 기획상 사용되지 않지만 시간이 남으면 다뤄보죠! -->
       <div class="pagination">
         <button id="prevPage">Prev</button>
         <span id="currentPage">1</span>
         <button id="nextPage">Next</button>
       </div>
     </main>
+    <!-- 모듈화된 자바스크립트를 호출하는 부분입니다. 이부분도 나중에는 모아서 한번에 처리하면 좋겠네요. -->
     <script src="./js/indexScript.js" type="module" defer></script>
     <script src="./js/category.js" type="module" defer></script>
     <script src="./js/modal.js" type="module" defer></script>
