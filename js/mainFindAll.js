@@ -1,5 +1,4 @@
-const $cardContainer = document.querySelector(".card-container");
-const container = document.querySelector(".container");
+const $cardContainer = document.querySelector(".main-card-container");
 
 export function mainFindAll(response) {
   $cardContainer.innerHTML = "";
@@ -10,7 +9,7 @@ export function mainFindAll(response) {
     if (!movie.poster_path) return;
 
     const cardDivElement = document.createElement("div");
-    cardDivElement.className = "card-container-card";
+    cardDivElement.className = "main-card-container-card";
     cardDivElement.id = `card-${movie.id}`;
 
     let movieObj = {
@@ -22,7 +21,7 @@ export function mainFindAll(response) {
     };
 
     let card = `
-    <div class="content">
+    <div class="main-card-container-imageBox">
       <img src="${movieObj.img}" />
       
     </div>
@@ -31,5 +30,5 @@ export function mainFindAll(response) {
     cardDivElement.innerHTML = card;
     docFragment.appendChild(cardDivElement);
   });
-  $cardContainer.appendChild(docFragment);
+  // $cardContainer.appendChild(docFragment);
 }
