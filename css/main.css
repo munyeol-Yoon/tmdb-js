@@ -1,0 +1,107 @@
+/* .main-card-container {
+  position: relative;
+  width: 100vw;
+  height: 500px;
+  overflow-x: hidden;
+  padding: 2rem 0;
+  border: 5px solid black;
+}
+
+.scroll-element {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  animation: primary 8s linear infinite;
+}
+
+.main-card-container-primary {
+  display: flex;
+  animation: primary 8s linear infinite;
+}
+
+.main-card-container-secondary {
+  display: flex;
+  animation: secondary 8s linear infinite;
+}
+
+@keyframes primary {
+  from {
+    left: 0%;
+  }
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes secondary {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0%;
+  }
+}
+
+.main-card-container-card {
+  border: 2px solid blue;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.main-card-image {
+  height: 500px;
+  object-fit: cover;
+} */
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-350px * 7));
+  }
+}
+
+.main-card-container-primary {
+  background: white;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 500px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
+.main-card-container-primary::before,
+.main-card-container-primary::after {
+  background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 500px;
+  position: absolute;
+  width: 350px;
+  z-index: 2;
+}
+
+.main-card-container-primary::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.main-card-container-primary::before {
+  left: 0;
+  top: 0;
+}
+
+/* 전체 길이 */
+.main-card-container-primary .main-card-slide {
+  animation: scroll 5s linear infinite;
+  display: flex;
+  width: calc((350px * 7)+5);
+}
+
+.main-card-container-primary .main-card-container-card {
+  height: 500px;
+  width: 350px;
+}

@@ -1,7 +1,7 @@
 const $cardContainer = document.querySelector(".main-card-container");
 
 export function mainFindAll(response) {
-  $cardContainer.innerHTML = "";
+  // $cardContainer.innerHTML = "";
 
   const docFragment = document.createDocumentFragment();
 
