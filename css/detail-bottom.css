@@ -1,0 +1,41 @@
+
+#reviewArea {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    max-height: 80%; 
+    overflow-y: auto;
+    background-color: rgb(118, 171, 174);
+    padding: 50px;
+    border-radius: 20px;
+  }
+  
+  #reviewForm {
+    display: inline-block; 
+    display: flex;
+    border-radius: 10px;
+  }
+  
+  .review-item {
+      display: inline-block; 
+      margin: 0 10px; 
+      white-space: nowrap; 
+    }
+  
+  .reviewItemDiv{
+   display: grid;
+   grid-template-columns: 1fr 1fr 6fr 0.5fr 0.5fr;
+   margin-bottom: 3px;
+   border: 1px solid black;
+   border-radius: 10px;
+   background-color: white; 
+  }
+  
+  .reviewItemDiv p {
+    margin-left: 10px; 
+    margin-right: 10px;
+  }
+  
+  
