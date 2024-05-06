@@ -14,7 +14,7 @@ const addReview = (name, rate, review, password) => {
 
     localStorage.setItem("localReviews", JSON.stringify(reviews));
 
-    return {name, rate, review, password}
+    return {name, rate, review}
 }
 
 const createReviewElement = ({name, rate, review}) => {
@@ -43,25 +43,27 @@ const createReviewElement = ({name, rate, review}) => {
     reviewsContainer.appendChild(reviewDiv) 
 }
 
+//기존리뷰들 추가 
 reviews.forEach(createReviewElement);
 
 reviewForm.onsubmit = (e) => {
     e.preventDefault();
-
+   //로컬스토리지에 벨류저장
     const newReview = addReview(
         nameInput.value,
         ratingInput.value,
         reviewInput.value,
         passwordInput.value
     );
-
+    //리뷰 동적추가 
     createReviewElement(newReview)
-
+    //인풋 비우기 
     nameInput.value = "";
     ratingInput.value = "";
     reviewInput.value = "";
     passwordInput.value = "";
 }
+
 
 //validation check(리뷰글자수 제한)
 reviewInput.addEventListener("input", function() {
@@ -70,7 +72,7 @@ reviewInput.addEventListener("input", function() {
   
   if (text.length > maxLength) {
     alert("최대 50자까지 입력 가능합니다."); 
-    textarea.value = text.slice(0, maxLength); 
+    textarea.value = text.slice(0, maxLength); //50자 이후로는 입력안되게 
   }
 });
 
@@ -81,17 +83,61 @@ passwordInput.addEventListener("input", function() {
   
   let inputValue = passwordInput.value; 
   
-  passwordInput.value = inputValue.replace(/[^\d]/g, '');
+  passwordInput.value = inputValue.replace(/[^\d]/g, ''); //숫자만 입력할수 있게
 
   if (inputValue.length === 4) {
    submitBtn.disabled = false;
   } else {   
     submitBtn.disabled = true;
-  }
+  }//4자리만 입력가능하게 
 });
 
-//수정 및 삭제 기능
+// 리뷰수정 
 const editButtons = document.querySelectorAll(".editButton")
+
+editButtons.forEach((button, index) => {
+    button.addEventListener("click", function() {
+        const password = prompt("비밀번호를 입력하세요");
+
+        const commentPassword = reviews[index].password;
+
+        if (password === commentPassword) {
+    
+            const newReview = prompt("수정할 내용을 입력하세요", reviews[index].review);
+
+            if (newReview !== null) {
+                // 수정된 댓글을 저장합니다.
+                reviews[index].review = newReview;
+                // 화면에 수정된 내용을 반영합니다.
+                reviewsContainer.children[index].querySelector('.reviewItemDiv p:nth-child(3)').innerText = newReview;
+                // 로컬 스토리지 업데이트
+                localStorage.setItem("localReviews", JSON.stringify(reviews));
+                alert("댓글이 수정되었습니다.");
+            }
+        } else {
+            alert("비밀번호가 일치하지 않습니다!");
+        }
+    });
+});
+
+
+//리뷰삭제
 const deleteButtons = document.querySelectorAll(".deleteButton")
 
+deleteButtons.forEach((button, index) => {
+    button.addEventListener("click", function() {
+        const password = prompt("비밀번호를 입력하세요");
 
+        const commentPassword = reviews[index].password;
+
+        // 사용자가 입력한 비밀번호와 댓글의 비밀번호를 비교
+        if (password === commentPassword) {
+            reviews.splice(index, 1); // 배열에서 해당 인덱스의 요소 삭제
+            localStorage.setItem("localReviews", JSON.stringify(reviews)); // 로컬 스토리지 업데이트
+            reviewsContainer.removeChild(reviewsContainer.children[index]); // 댓글을 화면에서도 삭제
+            alert("댓글이 삭제되었습니다.");
+        } else {
+            alert("비밀번호가 일치하지 않습니다!");
+        }
+    });
+});
