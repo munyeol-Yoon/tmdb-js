@@ -52,7 +52,7 @@ export function displayFindAllAndSearchResults(response) {
 
     // 카드 클릭 시, 새 창 띄우기
     cardDivElement.addEventListener("click", () => {
-      window.open ("/work.github.io/tmdb-js/html/detail.html")
+      window.open ("/html/detail.html")
     });
 
   
