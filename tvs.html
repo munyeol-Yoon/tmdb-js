@@ -1,0 +1,66 @@
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
+
+    <title>Tv</title>
+  </head>
+  <body>
+    <!-- 헤더부분입니다.  -->
+    <header>
+      <div class="mainCategory">
+        <a>
+          <img src="./assets/Logo.png" width="60" height="60" />
+        </a>
+        <a class="movie-category">Movie</a>
+        <a class="tv-category">TV</a>
+      </div>
+      <!-- 검색하는 부분입니다. -->
+      <div class="form-container">
+        <form class="search-form">
+          <label for="movie-search"></label>
+          <input
+            type="text"
+            placeholder="Search"
+            name="movie-search"
+            id="movie-search"
+          />
+          <button type="submit">Click</button>
+        </form>
+      </div>
+    </header>
+    <main>
+      <!-- card 가 들어가는 부분입니다. -->
+      <section class="card-container"></section>
+
+      <!-- 스크롤 최상단으로 이동하는 버튼. -->
+      <div class="btns">
+        <div class="moveToTop">↑</div>
+        <div class="moveToBottom">↓</div>
+      </div>
+
+      <!-- 모달 부분입니다. -->
+      <div class="container">
+        <div class="modal">
+          <h2>영화 제목</h2>
+          <p>모달내용 영화 상세 정보가 들어가야함</p>
+          <button class="close">Close</button>
+        </div>
+      </div>
+
+      <!-- 페이지네이션 부분입니다. 현재 기획상 사용되지 않지만 시간이 남으면 다뤄보죠! -->
+      <div class="pagination">
+        <button id="prevPage">Prev</button>
+        <span id="currentPage">1</span>
+        <button id="nextPage">Next</button>
+      </div>
+    </main>
+    <!-- 모듈화된 자바스크립트를 호출하는 부분입니다. 이부분도 나중에는 모아서 한번에 처리하면 좋겠네요. -->
+    <script src="./js/movesBtn.js" type="module" defer></script>
+    <script src="./js/indexScript.js" type="module" defer></script>
+    <script src="./js/category.js" type="module" defer></script>
+    <script src="./js/modal.js" type="module" defer></script>
+    <script src="./js/pagination.js" type="module" defer></script>
+  </body>
+</html>

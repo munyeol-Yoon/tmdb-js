@@ -1,13 +1,20 @@
+/*
+  여기는 문열님 파일에서
+  border 부분만 뺀 뒤 hover의 색상만
+  변경한 상태입니다.
+
+  제 생각에는 여기서 movie랑 tv 영역을
+  클릭 했을 때 색상이 바뀌는 걸 건들이면 될 것 같아요!
+*/
 header {
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 8vh;
-  border-bottom: 1px solid #d9d9d9;
 }
 
 header > :nth-child(1) > a:hover {
-  color: #48c9b0;
+  color: #76abae;
 }
 
 header > :nth-child(2) > a {
@@ -16,5 +23,9 @@ header > :nth-child(2) > a {
 }
 
 header > :nth-child(2) > a:hover {
-  color: #48c9b0;
+  color: #76abae;
 }
+
+
+
+

@@ -6,7 +6,7 @@
 const container = document.querySelector(".container");
 let closeButton;
 
-export function displayModal(movieObj) {
+export function displayModal(tvsObj) {
   // 1. 모달 안의 HTML 들을 초기화해요.
   container.innerHTML = "";
 
@@ -16,11 +16,7 @@ export function displayModal(movieObj) {
 
   // 3. 이 변수가 모달 안의 내용들이에요.
   let modal = `
-    <h2>${movieObj.title}</h2>
-    <img src="${movieObj.img}" />
-    <p>${movieObj.overview}</p>
-    <p>Rating: ${movieObj.rating}</p>
-    <button class="close">Close</button>
+  <h1>영화정보와 평점, 로그인을 넣을 공간 입니다.</h1>
   `;
 
   // 4. 아래 코드로 DOM 에 삽입해요.
