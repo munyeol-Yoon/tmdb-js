@@ -1,4 +1,7 @@
-const temph1 = document.getElementById("temp-h1");
+// TVs나 Movies 페이지 관련 html 및 js에서 detail-upper로 넘겨줘야 할 부분들:
+// (1) 클릭한 TV 또는 영화의 id 값을 url 내 'media_id' 속성의 값으로 전달해야 함
+// (2) 인기 TV와 영화 20개 가져오는 함수 (복붙해올 예정)
+
 // 클릭한 영화에 대해 표기될 정보들이 할당될 객체 미리 선언해둠
 let mediaInfos = {
   mediaID: 0,
@@ -23,7 +26,7 @@ const getMediaID = () => {
 mediaInfos.mediaID = parseInt(getMediaID());
 
 // (영화 제목, 설명, 포스터 사진, 평점을 가져오기 위해서)
-// TMDB에서 트렌딩 상위 영화 20개 정보 서버로부터 받아오는 함수
+// TMDB에서 트렌딩 상위 영화 20개 정보 서버로부터 받아오는 함수 => TVs와 Movies 페이지 js에서 복붙해올 부분임
 const fetchMovieData = async () => {
   const options = {
     method: "GET",
@@ -39,7 +42,7 @@ const fetchMovieData = async () => {
   return data.results;
 };
 
-// TMDB 서버에 접근해 지정된 영화/시리즈 ID에 따른 출연진 및 스태프 정보를 가져오는 함수
+// TMDB 서버에서 지정된 영화/시리즈 ID에 따른 출연진 및 스태프 정보를 가져오는 함수
 const fetchCredit = async (targetID) => {
   const options = {
     method: "GET",
