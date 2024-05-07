@@ -3,6 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
+/*폰트추가 ***/
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+
 @import "./header.css";
 @import "./form.css";
 @import "./card.css";
@@ -45,8 +49,27 @@ header > img {
 /*메인*/
 main {
   font-optical-sizing: auto;
-  font-style: normal;
+  font-style: normal;  
 }
+
+
+/*** 색깔 변경 시도***/
+header {
+  background-color: #222831;
+}
+
+/* 로고가 들어간 곳 > center로 변경 */
+header > img {
+  display: flex;
+  align-items: center;
+}
+
+
+body {
+  background-color: #31363f;
+  font-family: "Pretendard-Regular";
+}
+
 
 a {
   color: white;
@@ -56,6 +79,17 @@ a {
 
 h2 {
   font-weight: bold;
+}
+
+/* 스크롤바 배경 색상 */
+body::-webkit-scrollbar {
+  background-color: white;
+  width: 15px;
+}
+/* 스크롤바 컬러 색상과 둥글기 조절*/
+body::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+
 }
 
 button {
@@ -83,3 +117,4 @@ button:active {
   background-color: #e0aed0;
   color: white;
 }
+

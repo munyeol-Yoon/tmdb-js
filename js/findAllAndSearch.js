@@ -16,7 +16,7 @@ const container = document.querySelector(".container");
 export function displayFindAllAndSearchResults(response) {
   $cardContainer.innerHTML = "";
 
-  // TODO 아래는 따로 설명해드릴게요. 글로적기에는 왜사용하는지 설명해야해서요 ! 저녁에 설명드리죠!
+  // TODO 아래는 따로 설명해드릴게요. 글로적기에 왜사용하는지 설명해야해서요 ! 저녁에 설명드리죠!
   const docFragment = document.createDocumentFragment();
 
   response.results.forEach((data) => {
@@ -52,3 +52,7 @@ export function displayFindAllAndSearchResults(response) {
   });
   $cardContainer.appendChild(docFragment);
 }
+
+
+
+

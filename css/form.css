@@ -27,3 +27,13 @@
   border-radius: 30px;
   background-color: #eeeeee;
 }
+
+.form-container > form > button {
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: rgb(118, 171, 174); /*에메랄드 색으로 변경함*/
+}
+
+
