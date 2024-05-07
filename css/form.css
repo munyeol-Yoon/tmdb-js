@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 6vh;
-  border-bottom: 1px solid #d9d9d9;
+  height: 10vh;
+  border-bottom: 3px solid rgb(10, 12, 37);
 }
 
 .form-container > form > input {
@@ -12,3 +12,9 @@
   outline: none;
   padding: 0 5px 0 5px;
 }
+
+.search-form {
+  font-size : 25px
+}
+
+

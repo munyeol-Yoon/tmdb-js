@@ -19,7 +19,6 @@ export function displayModal(movieObj) {
     <h2>${movieObj.title}</h2>
     <img src="${movieObj.img}" />
     <p>${movieObj.overview}</p>
-    <p>Rating: ${movieObj.rating}</p>
     <button class="close">Close</button>
   `;
 

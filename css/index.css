@@ -2,6 +2,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+/*폰트추가*/
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+
 @import "./header.css";
 @import "./form.css";
 @import "./card.css";
@@ -9,16 +13,25 @@
 @import "./pagenation.css";
 
 *,
-header,
+
 main {
-  font-family: "Montserrat", sans-serif;
+  background-color: rgb(34, 40, 49);
+  font-family: "Pretendard", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  color: rgb(238, 238, 238);
+  
 }
 
 a {
-  color: black;
+  color: rgb(238, 238, 238);
   text-decoration-line: none;
+  font-size : 20px
+}
+
+#movie-search {
+  font-size: 20px;
+  color : rgb(244, 244, 189);
 }
 
 h2 {
@@ -26,8 +39,8 @@ h2 {
 }
 
 button {
-  background-color: #63e6be;
-  color: white;
+  background-color: rgb(118, 171, 174);
+  color: rgb(49, 54, 63);
   border: none;
   padding: 5px 10px;
   text-align: center;
@@ -46,4 +59,53 @@ button:hover {
 
 button:active {
   background-color: #1abc9c;
+}
+
+/* **** 스크롤 이동동작 구현 */
+.btns {
+  display : flex;
+  position: fixed;
+  right: .4rem;
+  bottom: .20rem;
+}
+
+
+.moveToTop {
+  bottom: 5rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  position: fixed; right: 12px;
+  background:rgb(12, 12, 12);
+  font-size: 20px;
+  text-align:center;
+  line-height: 2.4rem;
+  border: 1px solid rgb(71, 79, 122);
+  box-shadow: 0 0 5px rgb(71, 79, 122);
+}
+
+.moveToBottom {
+  bottom: 2rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  position: fixed; right: 12px;
+  background:rgb(12, 12, 12);
+  font-size: 20px;
+  text-align:center;
+  line-height: 2.4rem;
+  border: 1px solid rgb(71, 79, 122);
+  box-shadow: 0 0 5px rgb(71, 79, 122);
+}
+
+.moveToTop:hover {
+  color: rgb(238, 238, 238);
+  background: rgb(66, 71, 105);
+}
+
+.moveToBottom:hover {
+  color:rgb(238, 238, 238);
+  background:rgb(66, 71, 105);
 }

@@ -5,7 +5,7 @@ import { displayFindAllAndSearchResults } from "./findAllAndSearch.js";
 
 // TODO 전체조회
 fetch(
-  "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
+  "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc", 
   options
 )
   .then((response) => response.json())
@@ -36,3 +36,19 @@ $searchForm.addEventListener("submit", async (e) => {
     console.error(err);
   }
 });
+
+
+
+// ***스크롤 최상단 이동
+const $topBtn = document.querySelector(".moveToTop");
+const $bottomBtn = document.querySelector(".moveToBottom");
+
+$topBtn.onclick = () => {
+  window.scrollTo({top: 0, behavior: "smooth"})
+}
+
+
+$bottomBtn.onclick = () => {
+  window.scrollTo({top:
+    document.body.scrollHeight, behavior: "smooth"});
+};
