@@ -3,12 +3,13 @@
   justify-content: center;
   align-items: center;
   height: 6vh;
-  border-bottom: 1px solid #d9d9d9;
 }
 
 .form-container > form > input {
   border: none;
-  border-bottom: 1px solid #d9d9d9;
   outline: none;
-  padding: 0 5px 0 5px;
+  padding: 5px;
+
+  border-radius: 30px;
+  background-color: #eeeeee;
 }

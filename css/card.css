@@ -1,32 +1,32 @@
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-gap: 20px;
-  margin: 30px;
+  margin: 60px;
 }
 
 .card-container-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  width: 400px;
+
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s ease-out;
+}
+
+.card-container-card:hover {
+  overflow: hidden;
+  transform: translateY(-5px);
+  box-shadow: 0 24px 36px #222831;
 }
 
 .card-container-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 8px 8px 0 0;
-}
-
-.card-container-card > h3 {
-  font-size: large;
-  font-weight: bolder;
-  padding: 10px;
-}
-
-.card-container-card > p {
-  padding: 10px;
+  display: flex;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 @media (max-width: 1000px) {
