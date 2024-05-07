@@ -2,7 +2,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-/*폰트추가*/
+/*폰트추가 ***/
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
 
@@ -13,99 +13,79 @@
 @import "./pagenation.css";
 
 *,
-
+header,
 main {
-  background-color: rgb(34, 40, 49);
+ /*논의된 폰트명으로 지정하였습니다*/
   font-family: "Pretendard", sans-serif;
   font-optical-sizing: auto;
-  font-style: normal;
-  color: rgb(238, 238, 238);
-  
+  font-style: normal;  
 }
+
+
+/*** 색깔 변경 시도***/
+header {
+  background-color: black;  /* #222831  */
+}
+
+/* 로고가 들어간 곳 > center로 변경 */
+header > img {
+  display: flex;
+  align-items: center;
+}
+
+
+body {
+  background-color: #31363f;
+  font-family: "Pretendard-Regular";
+}
+
 
 a {
-  color: rgb(238, 238, 238);
+  color: white;
+  cursor: pointer;
   text-decoration-line: none;
-  font-size : 20px
-}
-
-#movie-search {
-  font-size: 20px;
-  color : rgb(244, 244, 189);
 }
 
 h2 {
   font-weight: bold;
 }
 
+/* 스크롤바 배경 색상 */
+body::-webkit-scrollbar {
+  background-color: white;
+  width: 15px;
+}
+/* 스크롤바 컬러 색상과 둥글기 조절*/
+body::-webkit-scrollbar-thumb {
+  background-color: #76abae;
+  border-radius: 5px;
+}
+
 button {
-  background-color: rgb(118, 171, 174);
-  color: rgb(49, 54, 63);
+  background-color: white;
+  color: black;
+
   border: none;
-  padding: 5px 10px;
+  padding: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 30px;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #48c9b0;
+  background-color: #76abae;
 }
 
 button:active {
-  background-color: #1abc9c;
+  background-color: #e0aed0;
 }
 
-/* **** 스크롤 이동동작 구현 */
-.btns {
-  display : flex;
-  position: fixed;
-  right: .4rem;
-  bottom: .20rem;
-}
-
-
-.moveToTop {
-  bottom: 5rem;
-  right: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  position: fixed; right: 12px;
-  background:rgb(12, 12, 12);
-  font-size: 20px;
-  text-align:center;
-  line-height: 2.4rem;
-  border: 1px solid rgb(71, 79, 122);
-  box-shadow: 0 0 5px rgb(71, 79, 122);
-}
-
-.moveToBottom {
-  bottom: 2rem;
-  right: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  position: fixed; right: 12px;
-  background:rgb(12, 12, 12);
-  font-size: 20px;
-  text-align:center;
-  line-height: 2.4rem;
-  border: 1px solid rgb(71, 79, 122);
-  box-shadow: 0 0 5px rgb(71, 79, 122);
-}
-
-.moveToTop:hover {
-  color: rgb(238, 238, 238);
-  background: rgb(66, 71, 105);
-}
-
-.moveToBottom:hover {
-  color:rgb(238, 238, 238);
-  background:rgb(66, 71, 105);
+/* 카피라이터 부분을 가운데 정렬하였습니다*/
+.teamMember {
+  text-align: center;
 }

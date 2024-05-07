@@ -30,21 +30,18 @@ export function displayFindAllAndSearchResults(response) {
     let movieObj = {
       title: movie.title ? movie.title : movie.name,
       img: `https://image.tmdb.org/t/p/w300/${movie.poster_path}`,
+      overview: movie.overview,
+      rating: movie.vote_average,
     };
 
     // card 의 구성을 바꾸거나 핸들링하고 싶으면 여기를 바꾸면 되어요.
     // 저희는 상세모달창이 있으니 사진만 있으면 되겠죠? ** overview, rating 관련 class(Text)삭제
     let card = `
-    
-     <figure class="content">
-        <img src="${movieObj.img}" />
-        <figcaption>
-            <h3 class="movieObjTitle"> ${movieObj.title}</h3>
-        </figcaption>
-        <a href = "#"> </a>
-     </figure>
-    
+    <div class="content">
+      <img src="${movieObj.img}" />
+    </div>
     `;
+   
 
     console.log(movieObj);
    

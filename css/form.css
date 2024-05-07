@@ -2,19 +2,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10vh;
-  border-bottom: 3px solid rgb(10, 12, 37);
+  height: 6vh;
+  
 }
 
 .form-container > form > input {
   border: none;
-  border-bottom: 1px solid #d9d9d9;
   outline: none;
-  padding: 0 5px 0 5px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: #eeeeee;
 }
 
-.search-form {
-  font-size : 25px
+.form-container > form > button {
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: rgb(118, 171, 174);
 }
 
 
