@@ -26,37 +26,27 @@ export function displayFindAllAndSearchResults(response) {
     cardDivElement.className = "card-container-card";
  
 
-    // **제목과 포스터만 나오게
+    
+    // -기준님 코드 참고
+
     let movieObj = {
+      id: movie.id,
       title: movie.title ? movie.title : movie.name,
-      img: `https://image.tmdb.org/t/p/w300/${movie.poster_path}`,
+      img: `https://image.tmdb.org/t/p/w400/${movie.poster_path}`,
       overview: movie.overview,
       rating: movie.vote_average,
     };
 
     // card 의 구성을 바꾸거나 핸들링하고 싶으면 여기를 바꾸면 되어요.
     // 저희는 상세모달창이 있으니 사진만 있으면 되겠죠? ** overview, rating 관련 class(Text)삭제
-    let card = `
+    
+    // -href 경로를 기준님의 경로로 변경
+    let card = `<a href = "/feature/detail.html?type=movie&media_id=${movieObj.id}"
     <div class="content">
       <img src="${movieObj.img}" />
-    </div>
+    </div></a>
     `;
-   
-
-    console.log(movieObj);
-   
-
-
-    // 카드 클릭 시, 새 창 띄우기
-    cardDivElement.addEventListener("click", () => {
-      window.open ("/html/detail.html")
-    });
-
-  
-
-
-
-
+    
 
     cardDivElement.innerHTML = card;
     docFragment.appendChild(cardDivElement);
