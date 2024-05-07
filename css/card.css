@@ -7,7 +7,8 @@
 
 /* 카드 영역 */
 .card-container-card {
-  width: 400px;
+  /* width: 400px; */
+  height: auto;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
@@ -23,19 +24,12 @@
   box-shadow: 0 24px 36px #76abae;
 }
 /*
-  border-radius 부분 삭제 하였습니다!
-  이미 카드 영역에서 값을 주었기 때문에
-  이미지가 보이게 하는 것이 아니라 불필요하다 생각되어
-  삭제 하였습니다!
-
-  삭제 후 문제점 : 이미지 크기가 맞지 않는 카드의 값이
-  border-radius가 일부분만 적용된 상태로 보여서 다시 값을 넣었습니다.
+  img height 값을 넣으니 빈 여백 없이 잘 출력 됩니다!
 */
 .card-container-card img {
-  display: block;
   width: 100%;
-  object-fit: contain;
-  border-radius: 10px;
+  height: 100%;
+  object-fit: cover;
 }
 
 /*

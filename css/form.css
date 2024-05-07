@@ -4,21 +4,26 @@
   align-items: center;
   height: 6vh;
 }
-
+/*
+  
+*/
 .form-container > form > input {
   border: none;
   outline: none;
-  padding: 5px;
+  padding: 7px;
 
   border-radius: 30px;
   background-color: #eeeeee;
 }
 
-/* 버튼 추가 후 검색과 같은 값을 주었습니다. */
+/*
+  버튼 추가 후 검색과 같은 값을 주었습니다.
+*/
 .form-container > form > button {
   border: none;
   outline: none;
   padding: 5px;
+
   border-radius: 30px;
   background-color: #eeeeee;
 }

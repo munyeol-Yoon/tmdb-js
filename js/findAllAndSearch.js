@@ -35,9 +35,7 @@ export function displayFindAllAndSearchResults(response) {
     };
 
     let card = `
-    <div class="content">
       <img src="${movieObj.img}" />
-    </div>
     `;
 
     // 이 이벤트는 모달 이벤트가 발생하는 부분이에요!
