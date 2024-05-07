@@ -8,8 +8,8 @@ const reviewsContainer = document.querySelector(".reviews");
 
 const reviews = JSON.parse(localStorage.getItem("localReviews")) || [];
 
-const addReview = (name, rate, review, password) => {
-  reviews.push({name, rate, review, password});
+const addReview = (name, rate, review, password,targetID) => {
+  reviews.push({name, rate, review, password, targetID});
 
   localStorage.setItem("localReviews", JSON.stringify(reviews));
 
@@ -88,21 +88,37 @@ const createReviewElement = ({name, rate, review}) => {
   });
 };
 
-//기존리뷰들 추가
-reviews.forEach(createReviewElement);
+// 해당페이지 영화 id 가져오는 함수 
+const getMediaID = () => {
+  const urlParams = new URL(location.href).searchParams;
+  const targetID = urlParams.get("media_id");
+  return targetID;
+};
+console.log(location.href)
 
+const targetID = getMediaID();
+//기존리뷰들 추가
+const filterReviews = reviews.filter((review) => review.targetID === targetID);
+filterReviews.forEach(createReviewElement);
+
+//폼에 서밋 버튼에 이벤트 추가 
 reviewForm.onsubmit = (e) => {
   e.preventDefault();
+  
   //로컬스토리지에 벨류저장
-  const newReview = addReview(nameInput.value, ratingInput.value, reviewInput.value, passwordInput.value);
+  const newReview = addReview(nameInput.value, ratingInput.value, reviewInput.value, passwordInput.value, targetID);
   //리뷰 동적추가
-  createReviewElement(newReview);
+ 
+    createReviewElement(newReview);
+ 
   //인풋 비우기
   nameInput.value = "";
   ratingInput.value = "";
   reviewInput.value = "";
   passwordInput.value = "";
 };
+
+
 
 //validation check(리뷰글자수 제한)
 reviewInput.addEventListener("input", function () {
