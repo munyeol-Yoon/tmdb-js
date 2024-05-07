@@ -12,6 +12,12 @@
   cursor: pointer;
 }
 
+.card-container-card:hover {
+  overflow: hidden;
+  transform: translateY(-5px);
+  box-shadow: 0 24px 36px #222831;
+}
+
 .card-container-card img {
   display: block;
   width: 100%;
