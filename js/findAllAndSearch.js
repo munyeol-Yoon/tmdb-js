@@ -19,28 +19,31 @@ export function displayFindAllAndSearchResults(response) {
   // TODO 아래는 따로 설명해드릴게요. 글로적기에는 왜사용하는지 설명해야해서요 ! 저녁에 설명드리죠!
   const docFragment = document.createDocumentFragment();
 
-  response.results.forEach((movie) => {
-    if (!movie.poster_path) return; // 이 부분은 이미지가 없는 영화의 경우 제외시킨겁니다!
+  response.results.forEach((data) => {
+    if (!data.poster_path) return; // 이 부분은 이미지가 없는 영화의 경우 제외시킨겁니다!
 
     const cardDivElement = document.createElement("div");
     cardDivElement.className = "card-container-card";
+    cardDivElement.id = `card-${data.id}`;
 
-    /*
-      현재 저는 img 태그만 남겨두고 다른 태그들은 지운 상태입니다!
-      나중에 합칠 때 충돌이 일어나지 않았으면 한 부분도 있지만
-      일단 img만 보이게 하는 것으로 통일 했어서 img 만 남겨두었습니다!
-    */
-    let movieObj = {
-      img: `https://image.tmdb.org/t/p/w400/${movie.poster_path}`,
+    let dataObj = {
+      id: data.id,
+      title: data.title ? data.title : data.name,
+      img: `https://image.tmdb.org/t/p/w400/${data.poster_path}`,
+      overview: data.overview,
+      rating: data.vote_average,
     };
 
     let card = `
-      <img src="${movieObj.img}" />
+    <a href = "/feature/detail.html?type=tv&media_id=${dataObj.id}"
+    <div class="content">
+      <img src="${dataObj.img}" />
+    </div></a>
     `;
 
     // 이 이벤트는 모달 이벤트가 발생하는 부분이에요!
     cardDivElement.addEventListener("click", () => {
-      displayModal(movieObj);
+      displayModal(dataObj);
       container.style.display = "flex";
     });
 

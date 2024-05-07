@@ -6,7 +6,7 @@
 const container = document.querySelector(".container");
 let closeButton;
 
-export function displayModal(movieObj) {
+export function displayModal(tvsObj) {
   // 1. 모달 안의 HTML 들을 초기화해요.
   container.innerHTML = "";
 

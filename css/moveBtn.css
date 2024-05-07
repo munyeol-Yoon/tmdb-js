@@ -4,6 +4,7 @@
   position: fixed;
   right: 0.4rem;
   bottom: 0.2rem;
+  cursor: pointer;
 }
 
 .moveToTop {
@@ -20,6 +21,7 @@
   line-height: 2.4rem;
   border: 1px solid rgb(71, 79, 122);
   box-shadow: 0 0 5px rgb(71, 79, 122);
+  color: white;
 }
 
 .moveToBottom {
@@ -36,6 +38,7 @@
   line-height: 2.4rem;
   border: 1px solid rgb(71, 79, 122);
   box-shadow: 0 0 5px rgb(71, 79, 122);
+  color: white;
 }
 
 .moveToTop:hover {

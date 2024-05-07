@@ -1,6 +1,7 @@
 @import "./reset.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
 @import "./header.css";
 @import "./form.css";
@@ -8,25 +9,28 @@
 @import "./modal.css";
 @import "./pagenation.css";
 /*import를 이용해 추가 파일을 연결 시켰어요!*/
-@import "./font.css";
 @import "./moveBtn.css";
 @import "./team_member.css";
 
 /*바디 영역*/
 body {
   background-color: #31363f;
-  font-family: "Pretendard-Regular";
+  font-family: "Pretendard", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
+
 /* 스크롤바 배경 색상 */
 body::-webkit-scrollbar {
   background-color: white;
   width: 15px;
 }
+
 /* 스크롤바 컬러 색상과 둥글기 조절*/
 body::-webkit-scrollbar-thumb {
-  background-color: #76abae;
-  border-radius: 5px;
+  background-color: #b4b4b4;
 }
+
 /* 헤더 */
 header {
   background-color: #222831;
@@ -71,9 +75,11 @@ button {
 }
 
 button:hover {
-  background-color: #76abae;
+  background-color: #31363f;
+  color: white;
 }
 
 button:active {
   background-color: #e0aed0;
+  color: white;
 }
