@@ -56,8 +56,8 @@ body::-webkit-scrollbar {
 }
 /* 스크롤바 컬러 색상과 둥글기 조절*/
 body::-webkit-scrollbar-thumb {
-  background-color: #76abae;
-  border-radius: 5px;
+  background-color: #b4b4b4;
+
 }
 
 button {
@@ -77,14 +77,11 @@ button {
 }
 
 button:hover {
-  background-color: #76abae;
+  background-color: #31363F;
+  color: white;
 }
 
 button:active {
   background-color: #e0aed0;
 }
 
-/* 카피라이터 부분을 가운데 정렬하였습니다*/
-.teamMember {
-  text-align: center;
-}

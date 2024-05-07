@@ -4,6 +4,7 @@
     position: fixed;
     right: 0.4rem;
     bottom: 0.2rem;
+    cursor: pointer; 
   }
   
   /* ***폰트 색상 추가 **/
