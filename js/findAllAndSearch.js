@@ -8,7 +8,7 @@
 
 // TODO 이파일은 전체를 조회하거나, 검색을 할때 사용하는 모듈이에요. displayFindAllAndSearchResults 를 호출해 인자를 넣으면 card 들을 화면에 보여줍니다.
 
-import { displayModal } from "./modal.js";
+// import { displayModal } from "./modal.js";
 
 const $cardContainer = document.querySelector(".card-container");
 const container = document.querySelector(".container");
@@ -42,17 +42,13 @@ export function displayFindAllAndSearchResults(response) {
     `;
 
     // 이 이벤트는 모달 이벤트가 발생하는 부분이에요!
-    cardDivElement.addEventListener("click", () => {
-      displayModal(dataObj);
-      container.style.display = "flex";
-    });
+    // cardDivElement.addEventListener("click", () => {
+    //   displayModal(movieObj);
+    //   container.style.display = "flex";
+    // });
 
     cardDivElement.innerHTML = card;
     docFragment.appendChild(cardDivElement);
   });
   $cardContainer.appendChild(docFragment);
 }
-
-
-
-

@@ -6,15 +6,14 @@
 /*폰트추가 ***/
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
-
 @import "./header.css";
 @import "./form.css";
 @import "./card.css";
 @import "./modal.css";
 @import "./pagenation.css";
-/*import를 이용해 추가 파일을 연결 시켰어요!*/
 @import "./moveBtn.css";
 @import "./team_member.css";
+@import "./main.css";
 
 /*바디 영역*/
 body {
@@ -49,9 +48,8 @@ header > img {
 /*메인*/
 main {
   font-optical-sizing: auto;
-  font-style: normal;  
+  font-style: normal;
 }
-
 
 /*** 색깔 변경 시도***/
 header {
@@ -64,12 +62,10 @@ header > img {
   align-items: center;
 }
 
-
 body {
   background-color: #31363f;
   font-family: "Pretendard-Regular";
 }
-
 
 a {
   color: white;
@@ -89,7 +85,6 @@ body::-webkit-scrollbar {
 /* 스크롤바 컬러 색상과 둥글기 조절*/
 body::-webkit-scrollbar-thumb {
   background-color: #b4b4b4;
-
 }
 
 button {
@@ -117,4 +112,3 @@ button:active {
   background-color: #e0aed0;
   color: white;
 }
-
