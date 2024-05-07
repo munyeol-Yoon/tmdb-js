@@ -13,9 +13,8 @@
 @import "./pagenation.css";
 
 *,
-header,
-main {
- /*논의된 폰트명으로 지정하였습니다*/
+header{
+ /****논의된 폰트명으로 지정하였습니다***/
   font-family: "Pretendard", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;  
@@ -24,7 +23,7 @@ main {
 
 /*** 색깔 변경 시도***/
 header {
-  background-color: black;  /* #222831  */
+  background-color: #222831;
 }
 
 /* 로고가 들어간 곳 > center로 변경 */

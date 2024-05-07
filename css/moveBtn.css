@@ -21,7 +21,7 @@
     line-height: 2.4rem;
     border: 1px solid rgb(71, 79, 122);
     box-shadow: 0 0 5px rgb(71, 79, 122);
-    color: white;
+    color: white;  /*글씨 색 추가*/
   }
   
   /* **폰트 색상 추가 **/
@@ -39,7 +39,7 @@
     line-height: 2.4rem;
     border: 1px solid rgb(71, 79, 122);
     box-shadow: 0 0 5px rgb(71, 79, 122);
-    color:white;
+    color:white;  /*글씨색 추가*/
   }
   
   .moveToTop:hover {
