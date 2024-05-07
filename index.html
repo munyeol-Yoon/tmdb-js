@@ -9,11 +9,11 @@
   <body>
     <!-- 헤더부분입니다.  -->
     <header>
-      <div>
-        <a href="./index.html">MY Flix</a>
-      </div>
-      <div>
-        <a class="movie-category">Movie</a>
+      <div class="mainCategory">
+        <a href="./main.html">
+          <img src="./assets/Logo.png" width="60" height="60" />
+        </a>
+        <a href="./movie.html" class="movie-category">Movie</a>
         <a class="tv-category">TV</a>
       </div>
     </header>
@@ -21,15 +21,23 @@
       <!-- 검색하는 부분입니다. -->
       <div class="form-container">
         <form class="search-form">
-          <label for="movie-search">Search : </label>
-          <input type="text" name="movie-search" id="movie-search" />
-          <button type="submit">Click</button>
+          <label for="movie-search"></label>
+          <input
+            type="text"
+            placeholder="Search"
+            name="movie-search"
+            id="movie-search"
+          />
         </form>
       </div>
 
       <!-- card 가 들어가는 부분입니다. -->
       <section class="card-container"></section>
-
+      <!-- 위, 아래로 이동하는 버튼 -->
+      <div class="moveBtn">
+        <button class="moveTopBtn">▲</button>
+        <button class="moveUnderBtn">▼</button>
+      </div>
       <!-- 모달 부분입니다. -->
       <div class="container">
         <div class="modal">
@@ -45,8 +53,14 @@
         <span id="currentPage">1</span>
         <button id="nextPage">Next</button>
       </div>
+      <div class="teamMember">
+        <p class="copyRight">
+          &copy;Copyright 2024. 이꾸조. All rights reserved.
+        </p>
+      </div>
     </main>
     <!-- 모듈화된 자바스크립트를 호출하는 부분입니다. 이부분도 나중에는 모아서 한번에 처리하면 좋겠네요. -->
+    <script src="./js/movesBtn.js" type="module" defer></script>
     <script src="./js/indexScript.js" type="module" defer></script>
     <script src="./js/category.js" type="module" defer></script>
     <script src="./js/modal.js" type="module" defer></script>

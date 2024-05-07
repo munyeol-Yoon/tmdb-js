@@ -11,20 +11,6 @@ const $tvCategory = document.querySelector(".tv-category");
 
 export let categoryStatus = "movie";
 
-$movieCategory.addEventListener("click", async () => {
-  categoryStatus = "movie";
-  fetch(
-    `https://api.themoviedb.org/3/discover/${categoryStatus}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`,
-    options
-  )
-    .then((response) => response.json())
-    .then((response) => {
-      displayFindAllAndSearchResults(response);
-      resetCurrentPage();
-    })
-    .catch((err) => console.error(err));
-});
-
 $tvCategory.addEventListener("click", async () => {
   categoryStatus = "tv";
   fetch(

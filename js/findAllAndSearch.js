@@ -39,11 +39,6 @@ export function displayFindAllAndSearchResults(response) {
     let card = `
     <div class="content">
       <img src="${movieObj.img}" />
-      <h3>${movieObj.title}</h3><br />
-      <div class="text">
-        <p>${movieObj.overview}</p><br />
-        <p class="rating">Rating : ${movieObj.rating}</p>
-      </div>
     </div>
     `;
 
