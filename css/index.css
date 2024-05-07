@@ -8,26 +8,8 @@
 @import "./modal.css";
 @import "./pagenation.css";
 
-/*바디 영역*/
-body {
-  background-color: #eeeeee;
-  font-family: "Pretendard-Regular";
-}
-body::-webkit-scrollbar {
-  background-color: white;
-  width: 15px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: #76abae;
-  border-radius: 5px;
-}
 *,
 header,
-header > img {
-  display: flex;
-  align-items: flex-end;
-}
 main {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
