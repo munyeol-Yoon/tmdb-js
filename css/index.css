@@ -32,10 +32,10 @@ header {
   background-color: #222831;
 }
 
-/* 로고가 들어간 곳 */
+/* 로고가 들어간 곳 > center로 변경 */
 header > img {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 /*메인*/
