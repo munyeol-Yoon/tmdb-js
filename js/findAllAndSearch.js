@@ -29,13 +29,12 @@ export function displayFindAllAndSearchResults(response) {
     let movieObj = {
       id: movie.id,
       title: movie.title ? movie.title : movie.name,
-      img: `https://image.tmdb.org/t/p/w300/${movie.poster_path}`,
+      img: `https://image.tmdb.org/t/p/w400/${movie.poster_path}`,
       overview: movie.overview,
       rating: movie.vote_average,
     };
 
-    // card 의 구성을 바꾸거나 핸들링하고 싶으면 여기를 바꾸면 되어요.
-    // 저희는 상세모달창이 있으니 사진만 있으면 되겠죠?
+    // img 파일만 보이게 해 놓은 상태 입니다.
     let card = `
     <div class="content">
       <img src="${movieObj.img}" />
