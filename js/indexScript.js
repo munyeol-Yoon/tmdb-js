@@ -2,12 +2,16 @@ import { options } from "./config.js";
 import { displayFindAllAndSearchResults } from "./findAllAndSearch.js";
 import { categoryStatus } from "./category.js";
 
+const $movieCategory = document.querySelector(".movie-category");
+const $tvCategory = document.querySelector(".tv-category");
+
 fetch(
   `https://api.themoviedb.org/3/discover/${categoryStatus}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`,
   options
 )
   .then((response) => response.json())
   .then((response) => {
+    updateCategoryColors(categoryStatus);
     displayFindAllAndSearchResults(response);
   })
   .catch((err) => console.error(err));
@@ -32,3 +36,14 @@ $searchForm.addEventListener("submit", async (e) => {
     console.error(err);
   }
 });
+
+function updateCategoryColors(activeCategory) {
+  if (activeCategory === "movie") {
+    $movieCategory.style.color = "#76abae";
+    $tvCategory.style.color = "white";
+  }
+  if (activeCategory === "tv") {
+    $movieCategory.style.color = "white";
+    $tvCategory.style.color = "#76abae";
+  }
+}
