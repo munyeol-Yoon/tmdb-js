@@ -9,7 +9,6 @@ let mediaInfos = {
   backdropPath: "",
   genreIds: [],
   genre: [],
-  genre: [],
   actors: [],
   directors: [],
 };
