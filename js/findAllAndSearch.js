@@ -19,34 +19,33 @@ export function displayFindAllAndSearchResults(response) {
   // TODO 아래는 따로 설명해드릴게요. 글로적기에 왜사용하는지 설명해야해서요 ! 저녁에 설명드리죠!
   const docFragment = document.createDocumentFragment();
 
-  response.results.forEach((movie) => {
-    if (!movie.poster_path) return; // 이 부분은 이미지가 없는 영화의 경우 제외시킨겁니다!
+  response.results.forEach((data) => {
+    if (!data.poster_path) return; // 이 부분은 이미지가 없는 영화의 경우 제외시킨겁니다!
 
     const cardDivElement = document.createElement("div");
     cardDivElement.className = "card-container-card";
- 
+    cardDivElement.id = `card-${data.id}`;
 
-    
-    // -기준님 코드 참고
-
-    let movieObj = {
-      id: movie.id,
-      title: movie.title ? movie.title : movie.name,
-      img: `https://image.tmdb.org/t/p/w400/${movie.poster_path}`,
-      overview: movie.overview,
-      rating: movie.vote_average,
+    let dataObj = {
+      id: data.id,
+      title: data.title ? data.title : data.name,
+      img: `https://image.tmdb.org/t/p/w400/${data.poster_path}`,
+      overview: data.overview,
+      rating: data.vote_average,
     };
 
-    // card 의 구성을 바꾸거나 핸들링하고 싶으면 여기를 바꾸면 되어요.
-    // 저희는 상세모달창이 있으니 사진만 있으면 되겠죠? ** overview, rating 관련 class(Text)삭제
-    
-    // -href 경로를 기준님의 경로로 변경
-    let card = `<a href = "/feature/detail.html?type=movie&media_id=${movieObj.id}"
+    let card = `
+    <a href = "/feature/detail.html?type=tv&media_id=${dataObj.id}"
     <div class="content">
-      <img src="${movieObj.img}" />
+      <img src="${dataObj.img}" />
     </div></a>
     `;
-    
+
+    // 이 이벤트는 모달 이벤트가 발생하는 부분이에요!
+    cardDivElement.addEventListener("click", () => {
+      displayModal(dataObj);
+      container.style.display = "flex";
+    });
 
     cardDivElement.innerHTML = card;
     docFragment.appendChild(cardDivElement);
