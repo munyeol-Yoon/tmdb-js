@@ -33,7 +33,7 @@ export function displayFindAllAndSearchResults(response) {
     };
 
     // img 파일만 보이게 해 놓은 상태 입니다.
-    let card = `<a href = "/feature/detail.html?media_id=${movieObj.id}"
+    let card = `<a href = "/feature/detail.html?type=movie&media_id=${movieObj.id}"
     <div class="content">
       <img src="${movieObj.img}" />
     </div></a>
