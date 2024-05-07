@@ -7,8 +7,10 @@
 @import "./card.css";
 @import "./modal.css";
 @import "./pagenation.css";
+/*import를 이용해 추가 파일을 연결 시켰어요!*/
 @import "./font.css";
 @import "./moveBtn.css";
+@import "./team_member.css";
 
 /*바디 영역*/
 body {
