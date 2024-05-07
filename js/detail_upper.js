@@ -8,7 +8,6 @@ let mediaInfos = {
   backdropPath: "",
   genreIds: [],
   genre: [],
-  genre: [],
   actors: [],
   directors: [],
 };
@@ -22,9 +21,8 @@ const getMediaID = () => {
 // 위 함수를 실행시킨 결과(=클릭한 미디어의 ID)를 mediaID 속성으로 할당
 mediaInfos.mediaID = parseInt(getMediaID());
 
-// (영화 제목, 설명, 포스터 사진, 평점을 가져오기 위해서)
-// TMDB에서 트렌딩 상위 영화 20개 정보 서버로부터 받아오는 함수
-const fetchMovieData = async () => {
+// TMDB에서 id에 따른 영화 정보 받아오는 함수
+const fetchMovieData = async (targetID) => {
   const options = {
     method: "GET",
     headers: {
@@ -34,13 +32,29 @@ const fetchMovieData = async () => {
     },
   };
 
-  const response = await fetch("https://api.themoviedb.org/3/trending/movie/day?language=en-US", options);
+  const response = await fetch(`https://api.themoviedb.org/3/movie/${parseInt(targetID)}?language=en-US`, options);
+  const data = await response.json();
+  return data;
+};
+
+// TMDB에서 id에 따른 tv 정보 받아오는 함수
+const fetchTVData = async (targetID) => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NDJlYjRiZmU3MDgxMWYxZTM4NTQ2NjdlY2E3ODMxZSIsInN1YiI6IjY2MmU1ODJiNjlkMjgwMDEyNjQzMWZjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SCAD6KLBg4hPCt30_MWWZ-UoNY_Da5R_IKuLnVelElQ",
+    },
+  };
+
+  const response = await fetch(`https://api.themoviedb.org/3/tv/${parseInt(targetID)}?language=en-US`, options);
   const data = await response.json();
   return data.results;
 };
 
-// TMDB 서버에 접근해 지정된 영화/시리즈 ID에 따른 출연진 및 스태프 정보를 가져오는 함수
-const fetchCredit = async (targetID) => {
+// TMDB 서버에 접근해 지정된 영화 ID에 따른 출연진 및 스태프 정보를 가져오는 함수
+const fetchMovieCredit = async (targetID) => {
   const options = {
     method: "GET",
     headers: {
@@ -54,8 +68,8 @@ const fetchCredit = async (targetID) => {
   return data;
 };
 
-// TMDB 서버에 접근해 장르 id와 이름 쌍 리스트 가져오는 함수
-const fetchGenreIdNamePair = async () => {
+// TMDB 서버에 접근해 지정된 영화 ID에 따른 출연진 및 스태프 정보를 가져오는 함수
+const fetchTvCredit = async (targetID) => {
   const options = {
     method: "GET",
     headers: {
@@ -64,16 +78,16 @@ const fetchGenreIdNamePair = async () => {
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NDJlYjRiZmU3MDgxMWYxZTM4NTQ2NjdlY2E3ODMxZSIsInN1YiI6IjY2MmU1ODJiNjlkMjgwMDEyNjQzMWZjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SCAD6KLBg4hPCt30_MWWZ-UoNY_Da5R_IKuLnVelElQ",
     },
   };
-  const response = await fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", options);
+  const response = await fetch(`https://api.themoviedb.org/3/tv/${parseInt(targetID)}/credits?language=en-US`, options);
   const data = await response.json();
-  return data.genres;
+  return data;
 };
 
 // 가져온 미디어 ID를 바탕으로 클릭 타겟 미디어에 대한 배우들 및 감독 정보와 더불어,
 // 영화 제목, 설명, 포스터 사진, 평점 정보를 구축하는 함수
-const createDatabase = async () => {
+const createMovieDatabase = async () => {
   // TMDB API에서 가져온 타겟 미디어 제작진 정보 객체를 상수 currentMediaCrews에 할당
-  const currentMediaCrews = await fetchCredit(mediaInfos.mediaID);
+  const currentMediaCrews = await fetchMovieCredit(mediaInfos.mediaID);
 
   // 각 출연배우의 이름, 성별, 배역, creditID, ID, 프로필사진 path가 담긴 객체들을 이전에 만든 actors 배열에 저장함
   currentMediaCrews.cast.forEach((actor) => {
@@ -104,12 +118,7 @@ const createDatabase = async () => {
   });
 
   // TMDB API에서 가져온 트렌딩 미디어들 정보 배열을 movies에 할당
-  const movies = await fetchMovieData();
-
-  //mediaInfos에 저장해둔 ID 값으로 클릭 타겟 미디어 색출
-  const currentMediaInfos = movies.filter((movie) => {
-    return movie.id === mediaInfos.mediaID;
-  })[0];
+  const currentMediaInfos = await fetchMovieData(mediaInfos.mediaID);
 
   // 색출된 타겟 미디어에서 필요한 정보 추출해 사전에 선언해둔 MediaInfos 객체에 할당시킴
   // 추후 해당 객체 통해 html 구성
@@ -120,17 +129,7 @@ const createDatabase = async () => {
   mediaInfos.backdropPath = currentMediaInfos.backdrop_path;
   mediaInfos.genreIds = currentMediaInfos.genre_ids;
 
-  console.log(mediaInfos);
-
-  const genreIdNamePairList = await fetchGenreIdNamePair();
-
-  genreIdNamePairList.forEach((genreIdNamePair) => {
-    mediaInfos.genreIds.forEach((genreId) => {
-      if (genreIdNamePair.id === genreId) {
-        mediaInfos.genre.push(genreIdNamePair.name);
-      }
-    });
-  });
+  console.log(currentMediaInfos);
 };
 
 // 백드롭 이미지, 제목, 평점, 장르 표시되는 상단부 섹션 구현하는 함수
@@ -191,7 +190,7 @@ const createCrewContainer = () => {
 };
 
 // 데이터베이스를 먼저 만든 후, html 문서 렌더링 작업 실행하도록 순서 설정
-createDatabase().then(() => {
+createMovieDatabase().then(() => {
   createBackdropSection();
   createPosterAndOverviewSection();
   createCrewContainer();
