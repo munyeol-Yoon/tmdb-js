@@ -3,13 +3,10 @@ const $topBtn = document.querySelector(".moveToTop");
 const $bottomBtn = document.querySelector(".moveToBottom");
 
 $topBtn.onclick = () => {
-  console.log("btn")
-    window.scrollTo({top: 0, behavior: "smooth"})
-  
-}
-
+  console.log("btn");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
 $bottomBtn.onclick = () => {
-  window.scrollTo({top:
-    document.body.scrollHeight, behavior: "smooth"});
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 };
