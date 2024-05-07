@@ -5,9 +5,9 @@
   margin: 60px;
 }
 
+/* 카드 영역 */
 .card-container-card {
   width: 400px;
-
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
@@ -17,17 +17,29 @@
   transition: all 0.3s ease-out;
 }
 
+/* 카드 hover */
 .card-container-card:hover {
-  overflow: hidden;
   transform: translateY(-5px);
-  box-shadow: 0 24px 36px #222831;
+  box-shadow: 0 24px 36px #76abae;
+}
+/*
+  border-radius 부분 삭제 하였습니다!
+  이미 카드 영역에서 값을 주었기 때문에
+  이미지가 보이게 하는 것이 아니라 불필요하다 생각되어
+  삭제 하였습니다!
+*/
+.card-container-card img {
+  display: block;
+  width: 100%;
+  object-fit: contain;
 }
 
-.card-container-card img {
-  display: flex;
-  object-fit: contain;
-  border-radius: 8px;
-}
+/*
+  h3 태그, p 태그 삭제 하였습니다.
+  일단 이미지만 보이게 하는 방향으로 진행 하기로 하여서
+  삭제 하였지만, 이미지만으로 제목을 유추할 수 없는 정보는
+  추후에 상의 후 붙히면 될 것 같아요!
+*/
 
 @media (max-width: 1000px) {
   .card-container {

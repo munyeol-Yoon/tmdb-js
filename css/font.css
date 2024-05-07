@@ -1,3 +1,11 @@
+/*
+  여기는 폰트들만 넣어둔 곳 입니다.
+  딱 한 가지 폰트만 쓰는 것도 통일감이 있어 좋지만
+  개인적으로 좀 더 추가하면 좋겠다 싶어
+  따로 폰트만 모아둔 폴더입니다!
+  그래서 이 부분은 같이 정해보면 좋을 것 같아요 :D
+*/
+
 @font-face {
   font-family: "Pretendard-Regular";
   src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")

@@ -12,22 +12,25 @@
 
 /*바디 영역*/
 body {
-  background-color: #eeeeee;
+  background-color: #31363f;
   font-family: "Pretendard-Regular";
 }
+/* 스크롤바 배경 색상 */
 body::-webkit-scrollbar {
   background-color: white;
   width: 15px;
 }
-
+/* 스크롤바 컬러 색상과 둥글기 조절*/
 body::-webkit-scrollbar-thumb {
   background-color: #76abae;
   border-radius: 5px;
 }
-/*헤더*/
+/* 헤더 */
 header {
   background-color: #222831;
 }
+
+/* 로고가 들어간 곳 */
 header > img {
   display: flex;
   align-items: flex-end;

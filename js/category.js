@@ -10,6 +10,24 @@ const $movieCategory = document.querySelector(".movie-category");
 const $tvCategory = document.querySelector(".tv-category");
 
 export let categoryStatus = "movie";
+/**
+ * 이 부분은 건들이지 않았지만
+ * 추후에 카테고리가 늘어나게 된다면
+ * 추가하면 좋을 것 같아요!
+ */
+$movieCategory.addEventListener("click", async () => {
+  categoryStatus = "movie";
+  fetch(
+    `https://api.themoviedb.org/3/discover/${categoryStatus}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`,
+    options
+  )
+    .then((response) => response.json())
+    .then((response) => {
+      displayFindAllAndSearchResults(response);
+      resetCurrentPage();
+    })
+    .catch((err) => console.error(err));
+});
 
 $tvCategory.addEventListener("click", async () => {
   categoryStatus = "tv";

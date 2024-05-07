@@ -24,17 +24,16 @@ export function displayFindAllAndSearchResults(response) {
 
     const cardDivElement = document.createElement("div");
     cardDivElement.className = "card-container-card";
-    cardDivElement.id = `card-${movie.id}`;
 
+    /*
+      현재 저는 img 태그만 남겨두고 다른 태그들은 지운 상태입니다!
+      나중에 합칠 때 충돌이 일어나지 않았으면 한 부분도 있지만
+      일단 img만 보이게 하는 것으로 통일 했어서 img 만 남겨두었습니다!
+    */
     let movieObj = {
-      id: movie.id,
-      title: movie.title ? movie.title : movie.name,
       img: `https://image.tmdb.org/t/p/w400/${movie.poster_path}`,
-      overview: movie.overview,
-      rating: movie.vote_average,
     };
 
-    // img 파일만 보이게 해 놓은 상태 입니다.
     let card = `
     <div class="content">
       <img src="${movieObj.img}" />

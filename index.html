@@ -10,10 +10,10 @@
     <!-- 헤더부분입니다.  -->
     <header>
       <div class="mainCategory">
-        <a href="./main.html">
+        <a href="./html/main.html">
           <img src="./assets/Logo.png" width="60" height="60" />
         </a>
-        <a href="./movie.html" class="movie-category">Movie</a>
+        <a href="./html/movie.html" class="movie-category">Movie</a>
         <a class="tv-category">TV</a>
       </div>
       <!-- 검색하는 부분입니다. -->
@@ -26,17 +26,20 @@
             name="movie-search"
             id="movie-search"
           />
+          <button type="submit">Click</button>
         </form>
       </div>
     </header>
     <main>
       <!-- card 가 들어가는 부분입니다. -->
       <section class="card-container"></section>
-      <!-- 위, 아래로 이동하는 버튼 -->
-      <div class="moveBtn">
-        <button class="moveTopBtn">▲</button>
-        <button class="moveUnderBtn">▼</button>
+
+      <!-- 스크롤 최상단으로 이동하는 버튼. -->
+      <div class="btns">
+        <div class="moveToTop">↑</div>
+        <div class="moveToBottom">↓</div>
       </div>
+
       <!-- 모달 부분입니다. -->
       <div class="container">
         <div class="modal">
@@ -52,6 +55,8 @@
         <span id="currentPage">1</span>
         <button id="nextPage">Next</button>
       </div>
+
+      <!-- 카피라이터 부분을 추가 했습니다! -->
       <div class="teamMember">
         <p class="copyRight">
           &copy;Copyright 2024. 이꾸조. All rights reserved.
