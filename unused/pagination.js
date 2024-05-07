@@ -1,6 +1,6 @@
-import { options } from "./config.js";
-import { displayFindAllAndSearchResults } from "./findAllAndSearch.js";
-import { categoryStatus } from "./category.js";
+import {options} from "./config.js";
+import {displayFindAllAndSearchResults} from "./findAllAndSearch.js";
+import {categoryStatus} from "./category.js";
 
 const $prevPageBtn = document.querySelector("#prevPage");
 const $nextPageBtn = document.querySelector("#nextPage");
@@ -52,7 +52,7 @@ function fetchData(page) {
 }
 
 function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({top: 0, behavior: "smooth"});
 }
 
 export function resetCurrentPage() {
