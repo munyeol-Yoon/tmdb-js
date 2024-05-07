@@ -6,7 +6,7 @@ header {
 }
 
 header > :nth-child(1) > a:hover {
-  color: #48c9b0;
+  color: #76abae;
 }
 
 header > :nth-child(2) > a {
@@ -15,5 +15,5 @@ header > :nth-child(2) > a {
 }
 
 header > :nth-child(2) > a:hover {
-  color: #48c9b0;
+  color: #76abae;
 }
