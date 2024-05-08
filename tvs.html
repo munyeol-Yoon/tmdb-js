@@ -1,0 +1,62 @@
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
+
+    <title>TV</title>
+  </head>
+  <body>
+    <header>
+      <div class="main-category">
+        <a href="./index.html">
+          <img src="./assets/Logo.png" width="60" height="60" />
+        </a>
+        <a href="./movie.html?categoryKey=movie" class="movie-category"
+          >Movie</a
+        >
+        <a href="./tvs.html?categoryKey=tv" class="tv-category">TV</a>
+      </div>
+      <div class="form-container">
+        <form class="search-form">
+          <label for="movie-search"></label>
+          <input
+            type="text"
+            placeholder="Search"
+            name="movie-search"
+            id="movie-search"
+          />
+          <button type="submit">Click</button>
+        </form>
+      </div>
+    </header>
+    <main>
+      <section class="card-container"></section>
+
+      <div class="btns">
+        <div class="moveToTop">↑</div>
+        <div class="moveToBottom">↓</div>
+      </div>
+
+      <div class="container">
+        <div class="modal">
+          <h2>영화 제목</h2>
+          <p>모달내용 영화 상세 정보가 들어가야함</p>
+          <button class="close">Close</button>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <button id="prevPage">Prev</button>
+        <span id="currentPage">1</span>
+        <button id="nextPage">Next</button>
+      </div>
+    </main>
+
+    <script src="./js/indexScript.js" type="module" defer></script>
+    <script src="./js/category.js" type="module" defer></script>
+    <script src="./js/modal.js" type="module" defer></script>
+    <script src="./js/pagination.js" type="module" defer></script>
+    <script src="./js/moveBtn.js" type="module" defer></script>
+  </body>
+</html>
