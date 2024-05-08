@@ -1,16 +1,28 @@
+/*폰트추가 ***/
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+body {
+    font-family: 'Pretendard-Regular', sans-serif;
+    background-color: var(--deepsea);
+
+    margin: 0px 0px 0px 0px;
+}
+
 header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 8vh;
+    height: 10vh;
   }
   
 header > :nth-child(1) > a:hover {
     color: #76abae;
+    font-weight:900;
   }
   
 header > :nth-child(2) > a:hover {
     color: #76abae;
+    font-weight:900;
   }
 
 header a {
@@ -18,10 +30,12 @@ header a {
     cursor: pointer;
     text-decoration-line: none;
 }
-  
-body {
-    margin: 0px 0px 0px 0px;
+
+.header-menu {
+    display:flex;
+    gap:40px;
 }
+
 .backdrop-container {
     position: relative;
     height: 450px;
@@ -160,10 +174,7 @@ body {
     --darkerFrostyMint: rgb(108, 161, 164);
   }
 
-body {
-    font-family: 'Pretendard-Regular', sans-serif;
-    background-color: var(--deepsea);
-}
+
 
 #reviewArea {
     margin: 0px auto 50px auto;
