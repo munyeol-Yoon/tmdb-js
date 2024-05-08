@@ -1,5 +1,18 @@
 // import { displayModal } from "./modal.js";
 
+// url 내 파라미터로 현재 페이지가 tv인지 movie인지 가져옴
+// 아래 각 카드마다 innerHTML로 하이퍼링크 걸 때 제대로 걸어주기 위함임
+const currentCategoryStatus = {
+  status: "",
+};
+
+const getCurrentCategoryStatus = () => {
+  const urlParams = new URL(location.href).searchParams;
+  currentCategoryStatus.status = urlParams.get("categoryKey");
+};
+
+getCurrentCategoryStatus();
+
 const $cardContainer = document.querySelector(".card-container");
 const container = document.querySelector(".container");
 
@@ -24,7 +37,7 @@ export function displayFindAllAndSearchResults(response) {
     };
 
     let card = `
-    <a href = "./detail.html?type=tv&media_id=${dataObj.id}"
+    <a href = "./detail.html?type=${currentCategoryStatus.status}&media_id=${dataObj.id}"
     <div class="content">
       <img src="${dataObj.img}" />
     </div></a>
