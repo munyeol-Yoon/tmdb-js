@@ -1,6 +1,8 @@
+// 영화/tv시리즈의 상세 정보가 표시되는 detail page의 상단부 내용 구현하는 함수임
 // 클릭한 영화에 대해 표기될 정보들이 할당될 객체 미리 선언해둠
 let mediaInfos = {
   mediaID: 0,
+  mediaType: "",
   posterPath: "",
   rating: 0,
   mediaTitle: "",
@@ -13,13 +15,13 @@ let mediaInfos = {
 };
 
 // url 내 클릭한 미디어 ID 정보 가져오는 함수
-const getMediaID = () => {
+const getMediaIdAndType = async () => {
   const urlParams = new URL(location.href).searchParams;
-  const targetID = urlParams.get("media_id");
-  return targetID;
+  mediaInfos.mediaID = parseInt(urlParams.get("media_id"));
+  mediaInfos.mediaType = urlParams.get("type");
+  console.log(mediaInfos.mediaType);
 };
 // 위 함수를 실행시킨 결과(=클릭한 미디어의 ID)를 mediaID 속성으로 할당
-mediaInfos.mediaID = parseInt(getMediaID());
 
 // TMDB에서 id에 따른 영화 정보 받아오는 함수
 const fetchMovieData = async (targetID) => {
@@ -50,7 +52,7 @@ const fetchTVData = async (targetID) => {
 
   const response = await fetch(`https://api.themoviedb.org/3/tv/${parseInt(targetID)}?language=en-US`, options);
   const data = await response.json();
-  return data.results;
+  return data;
 };
 
 // TMDB 서버에 접근해 지정된 영화 ID에 따른 출연진 및 스태프 정보를 가져오는 함수
@@ -85,51 +87,97 @@ const fetchTvCredit = async (targetID) => {
 
 // 가져온 미디어 ID를 바탕으로 클릭 타겟 미디어에 대한 배우들 및 감독 정보와 더불어,
 // 영화 제목, 설명, 포스터 사진, 평점 정보를 구축하는 함수
-const createMovieDatabase = async () => {
-  // TMDB API에서 가져온 타겟 미디어 제작진 정보 객체를 상수 currentMediaCrews에 할당
-  const currentMediaCrews = await fetchMovieCredit(mediaInfos.mediaID);
+const createDatabase = async () => {
+  await getMediaIdAndType();
+  const rawData = {};
 
-  // 각 출연배우의 이름, 성별, 배역, creditID, ID, 프로필사진 path가 담긴 객체들을 이전에 만든 actors 배열에 저장함
-  currentMediaCrews.cast.forEach((actor) => {
-    const currentActor = {
-      name: actor.name,
-      gender: actor.gender,
-      characterName: actor.character,
-      creditId: actor.credit_id,
-      id: actor.id,
-      profilepath: actor.profile_path,
-    };
-    mediaInfos.actors.push(currentActor);
-  });
+  // 클릭한 미디어가 영화일 때 실행시키는 부분임
+  if (mediaInfos.mediaType === "movie") {
+    // TMDB API에서 가져온 타겟 영화의 제작진 정보 객체를 상수 crews에 할당
+    rawData.crews = await fetchMovieCredit(mediaInfos.mediaID);
+    // TMDB API에서 가져온 타겟 영화의 상세 정보 객체를 상수 crews에 할당
+    rawData.infos = await fetchMovieData(mediaInfos.mediaID);
 
-  // 각 감독의 이름, 성별, creditID, ID, 프로필사진 path가 담긴 객체들을 이전에 만든 directors 배열에 저장함
-  // (감독도 여러명일 수 있으므로..)
-  currentMediaCrews.crew.forEach((crew) => {
-    if (crew.job === "Director") {
-      const currentCrew = {
-        name: crew.name,
-        gender: crew.gender,
-        creditId: crew.credit_id,
-        id: crew.id,
-        profilepath: crew.profile_path,
+    rawData.crews.cast.forEach((actor) => {
+      const currentActor = {
+        name: actor.name,
+        gender: actor.gender,
+        characterName: actor.character,
+        creditId: actor.credit_id,
+        id: actor.id,
+        profilepath: actor.profile_path,
       };
-      mediaInfos.directors.push(currentCrew);
-    }
-  });
+      mediaInfos.actors.push(currentActor);
+    });
+    // 각 감독의 이름, 성별, creditID, ID, 프로필사진 path가 담긴 객체들을 이전에 만든 directors 배열에 저장함
+    // (감독도 여러명일 수 있으므로..)
+    rawData.crews.crew.forEach((crew) => {
+      if (crew.job === "Director") {
+        const currentCrew = {
+          name: crew.name,
+          gender: crew.gender,
+          creditId: crew.credit_id,
+          id: crew.id,
+          profilepath: crew.profile_path,
+        };
+        mediaInfos.directors.push(currentCrew);
+      }
+    });
 
-  // TMDB API에서 가져온 트렌딩 미디어들 정보 배열을 movies에 할당
-  const currentMediaInfos = await fetchMovieData(mediaInfos.mediaID);
+    // 색출된 타겟 미디어에서 필요한 정보 추출해 사전에 선언해둔 MediaInfos 객체에 할당시킴
+    // 추후 해당 객체 통해 html 구성
+    mediaInfos.mediaTitle = rawData.infos.title;
+    mediaInfos.posterPath = rawData.infos.poster_path;
+    mediaInfos.rating = rawData.infos.vote_average.toFixed(1);
+    mediaInfos.overview = rawData.infos.overview;
+    mediaInfos.backdropPath = rawData.infos.backdrop_path;
+    mediaInfos.genreIds = rawData.infos.genre_ids;
+  }
+  // 클릭한 미디어가 tv일 때 실행시키는 부분임
+  else {
+    // TMDB API에서 가져온 타겟 tv시리즈의 제작진 정보 객체를 상수 crews에 할당
+    rawData.crews = await fetchTvCredit(mediaInfos.mediaID);
+    // TMDB API에서 가져온 타겟 tv시리즈의 상세 정보 객체를 상수 crews에 할당
+    rawData.infos = await fetchTVData(mediaInfos.mediaID);
 
-  // 색출된 타겟 미디어에서 필요한 정보 추출해 사전에 선언해둔 MediaInfos 객체에 할당시킴
-  // 추후 해당 객체 통해 html 구성
-  mediaInfos.mediaTitle = currentMediaInfos.title;
-  mediaInfos.posterPath = currentMediaInfos.poster_path;
-  mediaInfos.rating = currentMediaInfos.vote_average.toFixed(1);
-  mediaInfos.overview = currentMediaInfos.overview;
-  mediaInfos.backdropPath = currentMediaInfos.backdrop_path;
-  mediaInfos.genreIds = currentMediaInfos.genre_ids;
+    rawData.crews.cast.forEach((actor) => {
+      const currentActor = {
+        name: actor.name,
+        gender: actor.gender,
+        characterName: actor.character,
+        creditId: actor.credit_id,
+        id: actor.id,
+        profilepath: actor.profile_path,
+      };
+      mediaInfos.actors.push(currentActor);
+    });
+    // 각 감독의 이름, 성별, creditID, ID, 프로필사진 path가 담긴 객체들을 이전에 만든 directors 배열에 저장함
+    // (감독도 여러명일 수 있으므로..)
+    rawData.crews.crew.forEach((crew) => {
+      if (crew.job === "Director" || crew.job === "Producer") {
+        const currentCrew = {
+          name: crew.name,
+          gender: crew.gender,
+          creditId: crew.credit_id,
+          id: crew.id,
+          profilepath: crew.profile_path,
+        };
+        mediaInfos.directors.push(currentCrew);
+      }
+    });
 
-  console.log(currentMediaInfos);
+    // 색출된 타겟 미디어에서 필요한 정보 추출해 사전에 선언해둔 MediaInfos 객체에 할당시킴
+    // 추후 해당 객체 통해 html 구성
+    mediaInfos.mediaTitle = rawData.infos.name;
+    mediaInfos.posterPath = rawData.infos.poster_path;
+    mediaInfos.rating = rawData.infos.vote_average.toFixed(1);
+    mediaInfos.overview = rawData.infos.overview;
+    mediaInfos.backdropPath = rawData.infos.backdrop_path;
+    mediaInfos.genreIds = rawData.infos.genre_ids;
+  }
+  // 각 출연배우의 이름, 성별, 배역, creditID, ID, 프로필사진 path가 담긴 객체들을 이전에 만든 actors 배열에 저장함
+
+  console.log(mediaInfos);
 };
 
 // 백드롭 이미지, 제목, 평점, 장르 표시되는 상단부 섹션 구현하는 함수
@@ -190,7 +238,7 @@ const createCrewContainer = () => {
 };
 
 // 데이터베이스를 먼저 만든 후, html 문서 렌더링 작업 실행하도록 순서 설정
-createMovieDatabase().then(() => {
+createDatabase().then(() => {
   createBackdropSection();
   createPosterAndOverviewSection();
   createCrewContainer();

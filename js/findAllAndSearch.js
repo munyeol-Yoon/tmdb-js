@@ -33,6 +33,7 @@ export function displayFindAllAndSearchResults(response) {
     };
 
     // img 파일만 보이게 해 놓은 상태 입니다.
+    // 해당 부분의 href 내 type 부분 movie냐 tv냐에 따라 카드 클릭시 불러오는 detail 페이지 달라짐
     let card = `<a href = "/feature/detail.html?type=movie&media_id=${movieObj.id}"
     <div class="content">
       <img src="${movieObj.img}" />
