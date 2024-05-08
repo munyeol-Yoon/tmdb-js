@@ -99,6 +99,7 @@ header a {
 
 
 .movie-info-container {
+    padding-top:350px;
     background-color:rgb(238, 238, 238);
     
     border-radius: 20px;
@@ -125,12 +126,24 @@ header a {
     font-size:16pt;
     text-align: end;
     margin-right:10px;
-    margin-top: 40px;
+    margin-top: 50px;
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom:0px;
+}
+
+.runtime
+{
+    font-size:16pt;
+    text-align: end;
+    margin-right:10px;
+    margin-top: 5px;
     font-weight: 500;
     font-style: italic;
 }
 
 .overview {
+    padding-top:5%;
     margin-top:auto;
     margin-bottom: auto;
     margin-left: 50px;

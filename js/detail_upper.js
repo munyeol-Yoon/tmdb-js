@@ -15,6 +15,8 @@ let mediaInfos = {
   directors: [],
   directorCount: 0,
   releaseDate: "",
+  lastAiredDate: "",
+  runtime: 0,
 };
 
 // url 내 클릭한 미디어 ID 정보 가져오는 함수
@@ -139,6 +141,7 @@ const createDatabase = async () => {
     mediaInfos.overview = rawData.infos.overview;
     mediaInfos.backdropPath = rawData.infos.backdrop_path;
     mediaInfos.releaseDate = rawData.infos.release_date;
+    mediaInfos.runtime = rawData.infos.runtime;
 
     rawData.infos.genres.forEach((genre) => {
       mediaInfos.genre.push(genre.name);
@@ -191,6 +194,7 @@ const createDatabase = async () => {
     mediaInfos.backdropPath = rawData.infos.backdrop_path;
     mediaInfos.genreIds = rawData.infos.genre_ids;
     mediaInfos.releaseDate = rawData.infos.first_air_date;
+    mediaInfos.lastAiredDate = rawData.infos.last_air_date;
 
     rawData.infos.genres.forEach((genre) => {
       mediaInfos.genre.push(genre.name);
@@ -227,12 +231,15 @@ const createPosterAndOverviewSection = () => {
     $posterAndOverviewSection.innerHTML = `
     <img class = poster src="https://image.tmdb.org/t/p/w300${mediaInfos.posterPath}" onerror="this.onerror=null; this.src='/assets/blank_profile.png';">
     <h class="overview">${mediaInfos.overview}
-    <p class="release-date">release date: ${mediaInfos.releaseDate}</p>`;
+    <p class="release-date">release date: ${mediaInfos.releaseDate}</p>
+    <p class="runtime">runtime: ${mediaInfos.runtime} minutes</p>
+    `;
   } else {
     $posterAndOverviewSection.innerHTML = `
     <img class = poster src="https://image.tmdb.org/t/p/w300${mediaInfos.posterPath}" onerror="this.onerror=null; this.src='/assets/blank_profile.png';">
     <h class="overview">${mediaInfos.overview}
-    <p class="release-date">firse aired at: ${mediaInfos.releaseDate}</p>`;
+    <p class="release-date">first aired at:  ${mediaInfos.releaseDate}</p>
+    <p class="runtime">last aired at:  ${mediaInfos.lastAiredDate}</p>`;
   }
 };
 
