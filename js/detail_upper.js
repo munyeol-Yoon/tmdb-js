@@ -13,6 +13,7 @@ let mediaInfos = {
   genre: [],
   actors: [],
   directors: [],
+  directorCount: 0,
 };
 
 // url 내 클릭한 미디어 ID 정보 가져오는 함수
@@ -84,6 +85,7 @@ const fetchTvCredit = async (targetID) => {
   };
   const response = await fetch(`https://api.themoviedb.org/3/tv/${parseInt(targetID)}/credits?language=en-US`, options);
   const data = await response.json();
+  console.log(data);
   return data;
 };
 
@@ -159,13 +161,20 @@ const createDatabase = async () => {
     // 각 감독의 이름, 성별, creditID, ID, 프로필사진 path가 담긴 객체들을 이전에 만든 directors 배열에 저장함
     // (감독도 여러명일 수 있으므로..)
     rawData.crews.crew.forEach((crew) => {
-      if (crew.job === "Director" || crew.job === "Producer") {
+      if (
+        crew.job === "Director" ||
+        crew.job === "Producer" ||
+        crew.job === "Creator" ||
+        crew.job === "Writers' Production" ||
+        crew.job === "Executive Producer"
+      ) {
         const currentCrew = {
           name: crew.name,
           gender: crew.gender,
           creditId: crew.credit_id,
           id: crew.id,
           profilepath: crew.profile_path,
+          job: crew.job,
         };
         mediaInfos.directors.push(currentCrew);
       }
@@ -221,28 +230,39 @@ const createPosterAndOverviewSection = () => {
 
 // 제작진 및 배우 section 내용 구현하는 함수
 const createCrewContainer = () => {
-  // 감독
   const crewContainer = document.getElementById("crew-info-container");
-  mediaInfos.directors.forEach((director) => {
-    const addTarget = document.createElement("div");
-    addTarget.id = director.id;
-    addTarget.class = "crew-card";
-    addTarget.innerHTML = `
-    <img class = "crew-image" src="https://image.tmdb.org/t/p/original${director.profilepath}" alt="${director.name}">
-    <h3 class="crew-name">${director.name}</h3>
-    <p class="crew-job">Director</p>`;
-    crewContainer.appendChild(addTarget);
-  });
-  // 배우들 (5명)
-  for (let i = 0; i < 5; i++) {
-    const addTarget = document.createElement("div");
-    addTarget.id = mediaInfos.actors[i].id;
-    addTarget.class = "crew-card";
-    addTarget.innerHTML = `
-    <img  class = "crew-image" src="https://image.tmdb.org/t/p/w200${mediaInfos.actors[i].profilepath}" alt="${mediaInfos.actors[i].name}">
-    <h3 class="crew-name">${mediaInfos.actors[i].name}</h3>
-    <p class="crew-job">${mediaInfos.actors[i].characterName}</p>`;
-    crewContainer.appendChild(addTarget);
+  // 감독 (2명)
+  for (let i = 0; i < 2; i++) {
+    if (mediaInfos.directors[i] !== undefined) {
+      const addTarget = document.createElement("div");
+      addTarget.id = mediaInfos.directors[i].id;
+      addTarget.className = "crew-card";
+      addTarget.innerHTML = `
+      <img class = "crew-image" src="https://image.tmdb.org/t/p/original${mediaInfos.directors[i].profilepath}" alt="${mediaInfos.directors[i].name}">
+      <h3 class="crew-name">${mediaInfos.directors[i].name}</h3>
+      <p class="crew-job">${mediaInfos.directors[i].job}</p>`;
+      crewContainer.appendChild(addTarget);
+      mediaInfos.directorCount++;
+    }
+  }
+
+  // 배우들 (6-감독명수)
+  for (let i = 0; i < 6 - mediaInfos.directorCount; i++) {
+    if (mediaInfos.actors[i] !== undefined) {
+      const addTarget = document.createElement("div");
+      addTarget.id = mediaInfos.actors[i].id ? mediaInfos.actors[i].id : null;
+      addTarget.className = "crew-card";
+      addTarget.innerHTML = `
+      <img  class = "crew-image" src="https://image.tmdb.org/t/p/w200${mediaInfos.actors[i].profilepath}" alt="${mediaInfos.actors[i].name}">
+      <h3 class="crew-name">${mediaInfos.actors[i].name}</h3>
+      <p class="crew-job">${mediaInfos.actors[i].characterName}</p>`;
+      crewContainer.appendChild(addTarget);
+    } else {
+      const addTarget = document.createElement("div");
+      addTarget.className = "crew-card";
+      addTarget.innerHTML = "";
+      crewContainer.appendChild(addTarget);
+    }
   }
 };
 

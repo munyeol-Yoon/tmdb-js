@@ -107,6 +107,10 @@ body {
     align-items: stretch;
 }
 
+.crew-card {
+    width:200px;
+}
+
 .crew-image {
     width: 200px;
 }
@@ -114,7 +118,7 @@ body {
 .crew-name {
     text-align: center;
     width: 200px;
-    margin-top:5px;
+    margin-top:15px;
     margin-bottom: 0px;
     font-size: 14pt;
 }
