@@ -12,7 +12,7 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 10vh;
+    height: 8vh;
   }
   
 header > :nth-child(1) > a:hover {
