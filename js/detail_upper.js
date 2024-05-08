@@ -123,6 +123,7 @@ const createDatabase = async () => {
           creditId: crew.credit_id,
           id: crew.id,
           profilepath: crew.profile_path,
+          job: crew.job,
         };
         mediaInfos.directors.push(currentCrew);
       }
