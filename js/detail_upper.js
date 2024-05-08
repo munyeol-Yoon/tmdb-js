@@ -53,6 +53,7 @@ const fetchTVData = async (targetID) => {
 
   const response = await fetch(`https://api.themoviedb.org/3/tv/${parseInt(targetID)}?language=en-US`, options);
   const data = await response.json();
+  console.log(data);
   return data;
 };
 
@@ -132,7 +133,10 @@ const createDatabase = async () => {
     mediaInfos.rating = rawData.infos.vote_average.toFixed(1);
     mediaInfos.overview = rawData.infos.overview;
     mediaInfos.backdropPath = rawData.infos.backdrop_path;
-    mediaInfos.genreIds = rawData.infos.genre_ids;
+
+    rawData.infos.genres.forEach((genre) => {
+      mediaInfos.genre.push(genre.name);
+    });
   }
   // 클릭한 미디어가 tv일 때 실행시키는 부분임
   else {
@@ -175,6 +179,10 @@ const createDatabase = async () => {
     mediaInfos.overview = rawData.infos.overview;
     mediaInfos.backdropPath = rawData.infos.backdrop_path;
     mediaInfos.genreIds = rawData.infos.genre_ids;
+
+    rawData.infos.genres.forEach((genre) => {
+      mediaInfos.genre.push(genre.name);
+    });
   }
   // 각 출연배우의 이름, 성별, 배역, creditID, ID, 프로필사진 path가 담긴 객체들을 이전에 만든 actors 배열에 저장함
 
