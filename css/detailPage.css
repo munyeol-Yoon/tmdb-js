@@ -1,3 +1,24 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 8vh;
+  }
+  
+header > :nth-child(1) > a:hover {
+    color: #76abae;
+  }
+  
+header > :nth-child(2) > a:hover {
+    color: #76abae;
+  }
+
+header a {
+    color: white;
+    cursor: pointer;
+    text-decoration-line: none;
+}
+  
 body {
     margin: 0px 0px 0px 0px;
 }
