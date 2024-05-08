@@ -5,53 +5,38 @@
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="./css/main.css" />
 
-    <title>Movie</title>
+    <title>main</title>
   </head>
   <body>
-    <!-- 헤더부분입니다.  -->
     <header>
       <div>
         <a href="./index.html">MY Flix</a>
       </div>
       <div>
-        <a class="movie-category">Movie</a>
-        <a class="tv-category">TV</a>
+        <a href="./feature/movie.html" class="movie-category">Movie</a>
+        <a href="./feature/tvs.html" class="tv-category">TV</a>
       </div>
     </header>
     <main>
-      <!-- card 가 들어가는 부분입니다. -->
       <section class="main-movie-card-container">
         <div class="main-movie-card-container-scroll scroll-element">
           <span>영화</span>
           <div class="main-movie-card-slide">
-
           </div>
         </div>
-        
-        
       </section>
-
       <section class="main-tv-card-container">
         <div class="main-tv-card-container-scroll scroll-element">
           <span>TV</span>
           <div class="main-tv-card-slide">
-
           </div>
         </div>
-        
-        
       </section>
-      
-      
-
     <!-- 모듈화된 자바스크립트를 호출하는 부분입니다. 이부분도 나중에는 모아서 한번에 처리하면 좋겠네요. -->
     <script src="./js/main.js" type="module" defer></script>
     <script src="./js/category.js" type="module" defer></script>
   </body>
 </html>
-
-
-
 <!-- <div class="main-card-container-card">
   <img  class="main-card-image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" />
 </div>

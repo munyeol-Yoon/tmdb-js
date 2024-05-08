@@ -16,11 +16,10 @@ const container = document.querySelector(".container");
 export function displayFindAllAndSearchResults(response) {
   $cardContainer.innerHTML = "";
 
-  // TODO 아래는 따로 설명해드릴게요. 글로적기에 왜사용하는지 설명해야해서요 ! 저녁에 설명드리죠!
   const docFragment = document.createDocumentFragment();
 
   response.results.forEach((data) => {
-    if (!data.poster_path) return; // 이 부분은 이미지가 없는 영화의 경우 제외시킨겁니다!
+    if (!data.poster_path) return;
 
     const cardDivElement = document.createElement("div");
     cardDivElement.className = "card-container-card";
