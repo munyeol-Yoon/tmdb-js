@@ -14,7 +14,9 @@
         </a>
       </div>
       <div class="header-menu">
-        <a href="./movie.html?categoryKey=movie" class="movie-category">Movie</a>
+        <a href="./movie.html?categoryKey=movie" class="movie-category"
+          >Movie</a
+        >
         <a href="./tvs.html?categoryKey=tv" class="tv-category">TV</a>
       </div>
     </header>
@@ -36,17 +38,45 @@
     <div class="detail-bottom">
       <div id="reviewArea">
         <form id="reviewForm">
-          <input type="text" id="userName" name="userName" placeholder="이름" required />
-          <input type="number" id="userRating" name="userRating" min="1" max="10" placeholder="⭐" required />
-          <input type="password" id="userPassword" name="userPassword" placeholder="4자리 비밀번호" maxlength="4" required /><br />
-          <textarea id="userReview" name="userReview" rows="3" cols="50" placeholder="리뷰를 작성하세요(50자 이내)" required></textarea>
+          <input
+            type="text"
+            id="userName"
+            name="userName"
+            placeholder="이름"
+            required
+          />
+          <input
+            type="number"
+            id="userRating"
+            name="userRating"
+            min="1"
+            max="10"
+            placeholder="⭐"
+            required
+          />
+          <input
+            type="password"
+            id="userPassword"
+            name="userPassword"
+            placeholder="4자리 비밀번호"
+            maxlength="4"
+            required
+          /><br />
+          <textarea
+            id="userReview"
+            name="userReview"
+            rows="3"
+            cols="50"
+            placeholder="리뷰를 작성하세요(50자 이내)"
+            required
+          ></textarea>
           <button type="submit" id="submitBtn">등록</button>
         </form>
         <br /><br />
         <div class="reviews"></div>
       </div>
     </div>
-    <script src="/js/detail_upper.js"></script>
-    <script src="/js/detail_bottom.js"></script>
+    <script src="./js/detail_upper.js"></script>
+    <script src="./js/detail_bottom.js"></script>
   </body>
 </html>

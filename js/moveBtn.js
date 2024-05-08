@@ -1,6 +1,6 @@
 // ***스크롤 최상단 이동
-const $topBtn = document.querySelector(".moveToTop");
-const $bottomBtn = document.querySelector(".moveToBottom");
+const $topBtn = document.querySelector(".move-to-top");
+const $bottomBtn = document.querySelector(".move-to-bottom");
 
 $topBtn.onclick = () => {
   console.log("btn");

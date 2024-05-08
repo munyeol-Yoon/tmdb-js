@@ -1,31 +1,31 @@
-/*
-  여기는 문열님 파일에서
-  border 부분만 뺀 뒤 hover의 색상만
-  변경한 상태입니다.
-
-  제 생각에는 여기서 movie랑 tv 영역을
-  클릭 했을 때 색상이 바뀌는 걸 건들이면 될 것 같아요!
-*/
 header {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 8vh;
+  justify-content: center;
+  height: 10vh;
+  background-color: #222831;
+  box-shadow: 0 4px 2px -2px #22283180; /**/
 }
 
 header > :nth-child(1) > a:hover {
   color: #76abae;
-}
-
-header > :nth-child(2) > a {
-  padding: 10px;
-  cursor: pointer;
+  font-weight: 900;
 }
 
 header > :nth-child(2) > a:hover {
   color: #76abae;
+  font-weight: 900;
 }
+/**/
+.header-menu {
+  display: flex;
+  gap: 40px;
+}
+/**/
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-
-
-
+  width: 100%;
+  max-width: 1140px;
+}

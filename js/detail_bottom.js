@@ -9,14 +9,14 @@ const reviewsContainer = document.querySelector(".reviews");
 const reviews = JSON.parse(localStorage.getItem("localReviews")) || [];
 
 const addReview = (name, rate, review, password, targetId) => {
-  reviews.push({name, rate, review, password, targetId});
+  reviews.push({ name, rate, review, password, targetId });
 
   localStorage.setItem("localReviews", JSON.stringify(reviews));
 
-  return {name, rate, review, password, targetId};
+  return { name, rate, review, password, targetId };
 };
 
-const createReviewElement = ({name, rate, review, password, targetId}) => {
+const createReviewElement = ({ name, rate, review, password, targetId }) => {
   //create elements
   const reviewDiv = document.createElement("div");
   const reviewName = document.createElement("p");
@@ -38,17 +38,28 @@ const createReviewElement = ({name, rate, review, password, targetId}) => {
   deleteButton.textContent = "삭제";
 
   //add to the DOM
-  reviewDiv.append(reviewName, reviewRate, reviewComment, editButton, deleteButton);
+  reviewDiv.append(
+    reviewName,
+    reviewRate,
+    reviewComment,
+    editButton,
+    deleteButton
+  );
   reviewsContainer.appendChild(reviewDiv);
 
   //수정기능
   editButton.addEventListener("click", function () {
     const promptPassword = prompt("비밀번호를 입력하세요");
     const password = this.classList.item(1); // 클릭된 버튼의 클래스 중 두 번째 클래스를 가져옵니다.
-    const reviewIndex = reviews.findIndex((r) => r.targetId === targetId && r.password === promptPassword); // promptPassword를 사용하여 비밀번호를 확인합니다.
+    const reviewIndex = reviews.findIndex(
+      (r) => r.targetId === targetId && r.password === promptPassword
+    ); // promptPassword를 사용하여 비밀번호를 확인합니다.
 
     if (password === promptPassword) {
-      const editReview = prompt("수정할 내용을 입력하세요", reviews[reviewIndex].review); // 수정할 내용을 입력 받습니다.
+      const editReview = prompt(
+        "수정할 내용을 입력하세요",
+        reviews[reviewIndex].review
+      ); // 수정할 내용을 입력 받습니다.
       if (editReview !== null) {
         reviews[reviewIndex].review = editReview; // 리뷰를 수정합니다.
         // 여기서 추가 작업이 필요하다면 수행합니다.
@@ -65,7 +76,9 @@ const createReviewElement = ({name, rate, review, password, targetId}) => {
   deleteButton.addEventListener("click", function () {
     const promptPassword = prompt("비밀번호를 입력하세요");
     const password = this.classList.item(1); // 클릭된 버튼의 클래스 중 두 번째 클래스를 가져옵니다.
-    const reviewIndex = reviews.findIndex((r) => r.targetId === targetId && r.password === promptPassword); // promptPassword를 사용하여 비밀번호를 확인합니다.
+    const reviewIndex = reviews.findIndex(
+      (r) => r.targetId === targetId && r.password === promptPassword
+    ); // promptPassword를 사용하여 비밀번호를 확인합니다.
 
     if (password === promptPassword) {
       // 해당 인덱스의 리뷰를 삭제합니다.
@@ -94,7 +107,13 @@ reviewForm.onsubmit = (e) => {
   e.preventDefault();
 
   //로컬스토리지에 벨류저장
-  const newReview = addReview(nameInput.value, ratingInput.value, reviewInput.value, passwordInput.value, targetId);
+  const newReview = addReview(
+    nameInput.value,
+    ratingInput.value,
+    reviewInput.value,
+    passwordInput.value,
+    targetId
+  );
   //리뷰 동적추가
 
   createReviewElement(newReview);

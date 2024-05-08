@@ -36,7 +36,10 @@ const fetchMovieData = async (targetID) => {
     },
   };
 
-  const response = await fetch(`https://api.themoviedb.org/3/movie/${parseInt(targetID)}?language=en-US`, options);
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${parseInt(targetID)}?language=en-US`,
+    options
+  );
   const data = await response.json();
   return data;
 };
@@ -52,7 +55,10 @@ const fetchTVData = async (targetID) => {
     },
   };
 
-  const response = await fetch(`https://api.themoviedb.org/3/tv/${parseInt(targetID)}?language=en-US`, options);
+  const response = await fetch(
+    `https://api.themoviedb.org/3/tv/${parseInt(targetID)}?language=en-US`,
+    options
+  );
   const data = await response.json();
   console.log(data);
   return data;
@@ -68,7 +74,12 @@ const fetchMovieCredit = async (targetID) => {
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NDJlYjRiZmU3MDgxMWYxZTM4NTQ2NjdlY2E3ODMxZSIsInN1YiI6IjY2MmU1ODJiNjlkMjgwMDEyNjQzMWZjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SCAD6KLBg4hPCt30_MWWZ-UoNY_Da5R_IKuLnVelElQ",
     },
   };
-  const response = await fetch(`https://api.themoviedb.org/3/movie/${parseInt(targetID)}/credits?language=en-US`, options);
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${parseInt(
+      targetID
+    )}/credits?language=en-US`,
+    options
+  );
   const data = await response.json();
   return data;
 };
@@ -83,7 +94,12 @@ const fetchTvCredit = async (targetID) => {
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NDJlYjRiZmU3MDgxMWYxZTM4NTQ2NjdlY2E3ODMxZSIsInN1YiI6IjY2MmU1ODJiNjlkMjgwMDEyNjQzMWZjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SCAD6KLBg4hPCt30_MWWZ-UoNY_Da5R_IKuLnVelElQ",
     },
   };
-  const response = await fetch(`https://api.themoviedb.org/3/tv/${parseInt(targetID)}/credits?language=en-US`, options);
+  const response = await fetch(
+    `https://api.themoviedb.org/3/tv/${parseInt(
+      targetID
+    )}/credits?language=en-US`,
+    options
+  );
   const data = await response.json();
   console.log(data);
   return data;
@@ -162,7 +178,12 @@ const createDatabase = async () => {
     // 각 감독의 이름, 성별, creditID, ID, 프로필사진 path가 담긴 객체들을 이전에 만든 directors 배열에 저장함
     // (감독도 여러명일 수 있으므로..)
     rawData.crews.crew.forEach((crew) => {
-      if (crew.job === "Director" || crew.job === "Creator" || crew.job === "Writers' Production" || crew.job === "Executive Producer") {
+      if (
+        crew.job === "Director" ||
+        crew.job === "Creator" ||
+        crew.job === "Writers' Production" ||
+        crew.job === "Executive Producer"
+      ) {
         const currentCrew = {
           name: crew.name,
           gender: crew.gender,
@@ -218,7 +239,9 @@ const createBackdropSection = () => {
 
 // 포스터 사진과 평점 section 내용 구현하는 함수
 const createPosterAndOverviewSection = () => {
-  const $posterAndOverviewSection = document.getElementById("poster-and-overview");
+  const $posterAndOverviewSection = document.getElementById(
+    "poster-and-overview"
+  );
   $posterAndOverviewSection.innerHTML = `
     <img class = poster src="https://image.tmdb.org/t/p/w300${mediaInfos.posterPath}" onerror="this.onerror=null; this.src='/assets/blank_profile.png';">
     <p class="overview">${mediaInfos.overview}</p>

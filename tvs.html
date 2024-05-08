@@ -3,41 +3,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/index.css" />
-
     <title>TV</title>
   </head>
   <body>
     <header>
-      <div class="main-category">
-        <a href="./index.html">
-          <img src="./assets/Logo.png" width="60" height="60" />
-        </a>
-        <a href="./movie.html?categoryKey=movie" class="movie-category"
-          >Movie</a
-        >
-        <a href="./tvs.html?categoryKey=tv" class="tv-category">TV</a>
-      </div>
-      <div class="form-container">
-        <form class="search-form">
-          <label for="movie-search"></label>
-          <input
-            type="text"
-            placeholder="Search"
-            name="movie-search"
-            id="movie-search"
-          />
-          <button type="submit">Click</button>
-        </form>
+      <div class="header-content">
+        <div>
+          <a href="./index.html">
+            <img src="./assets/Logo.png" width="60" height="60" />
+          </a>
+        </div>
+        <div class="header-menu">
+          <div class="form-container">
+            <form class="search-form">
+              <label for="movie-search"></label>
+              <input
+                type="text"
+                placeholder="Search"
+                name="movie-search"
+                id="movie-search"
+              />
+              <button type="submit">Click</button>
+            </form>
+            <a href="./movie.html?categoryKey=movie" class="movie-category"
+              >Movie</a
+            >
+            <a href="./tvs.html?categoryKey=tv" class="tv-category">TV</a>
+          </div>
+        </div>
       </div>
     </header>
     <main>
       <section class="card-container"></section>
-
       <div class="btns">
-        <div class="moveToTop">↑</div>
-        <div class="moveToBottom">↓</div>
+        <div class="move-to-top">↑</div>
+        <div class="move-to-bottom">↓</div>
       </div>
-
       <div class="container">
         <div class="modal">
           <h2>영화 제목</h2>
@@ -45,14 +46,12 @@
           <button class="close">Close</button>
         </div>
       </div>
-
       <div class="pagination">
-        <button id="prevPage">Prev</button>
-        <span id="currentPage">1</span>
-        <button id="nextPage">Next</button>
+        <button id="prev-page">Prev</button>
+        <span id="current-page">1</span>
+        <button id="next-page">Next</button>
       </div>
     </main>
-
     <script src="./js/indexScript.js" type="module" defer></script>
     <script src="./js/category.js" type="module" defer></script>
     <script src="./js/modal.js" type="module" defer></script>

@@ -14,7 +14,7 @@ const getCurrentCategoryStatus = () => {
 getCurrentCategoryStatus();
 
 const $cardContainer = document.querySelector(".card-container");
-const container = document.querySelector(".container");
+// const container = document.querySelector(".container");
 
 export function displayFindAllAndSearchResults(response) {
   $cardContainer.innerHTML = "";
