@@ -176,72 +176,76 @@ header a {
 
 
 
-#reviewArea {
+#review-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0px auto 50px auto;
-    width: 50%;
-    max-height: 80%; 
+    padding: 40px;
+    width: 1400px;
+    height: 300px; 
     overflow-y: auto;
     background-color: var(--moonlight);
-   
-   
-    padding: 50px;
-    border-radius: 20px;
+    border-radius: 20px;  
+    gap: 0;
   }
   
-  #reviewForm {
+  #review-form {
     width:100%;
     display: inline-block; 
     display: flex;
     border-radius: 10px;
     margin: auto auto auto auto;
     justify-content: center;
-    gap:5px;
+    gap:2px;
   }
   
-  #reviewForm input,
-#reviewForm textarea,
-#reviewForm button {
+  #review-form input,
+#review-form textarea,
+#review-form button {
     display: block;
     border: 1px solid var(--moonlight);
     border-radius: 5px;
 }
 
-#reviewForm button {
+#review-form button {
     background-color: var(--frostymint);
     color: #fff;
     cursor: pointer;
     width:10%;
 }
 
-#reviewForm button:hover {
+#review-form button:hover,
+.edit-btn:hover,
+.delete-btn:hover {
     background-color: var(--darkerFrostyMint);
 }
 
-  
-  .reviewItemDiv{
+  .review-item-div{
    display: grid;
    grid-template-columns: 1fr 1fr 6fr 0.5fr 0.5fr;
    margin-bottom: 10px;
    background-color: var(--moonlight); 
-   border: 3px solid var(--frostymint);
+   /* border: 2px solid var(--frostymint);  */
    border-radius: 10px;
+   width: 1200px;
+   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
   
-  .reviewItemDiv p {
-    margin-left: 10px; 
-    margin-right: 10px;
-    display: inline-block;
-    
+  .review-item-div p {
+    margin-left: 30px; 
+    margin-right: 5px;
+    display: inline-block; 
   }
   
-  .editButton, .deleteButton {
+  .edit-btn, .delete-btn {
     border-radius: 10px;
-    width: 40px;
-    height: 40px;
-    margin-top: 6px;
+    width: 65px;
+    height: 55px;
     border-color: var(--frostymint);
     background-color: var(--frostymint);
     color: var(--moonlight);
+    cursor: pointer;
   }
 
   
