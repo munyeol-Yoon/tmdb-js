@@ -24,7 +24,7 @@ $searchForm.addEventListener("submit", async (e) => {
 
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=be0cff90e14f0c80c27eaf09e33fe7bb`
+      `https://api.themoviedb.org/3/search/${categoryStatus}?query=${searchQuery}&api_key=be0cff90e14f0c80c27eaf09e33fe7bb`
     );
     if (!response.ok) {
       throw new Error("API Error");
