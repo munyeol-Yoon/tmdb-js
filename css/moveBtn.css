@@ -7,7 +7,7 @@
   cursor: pointer;
 }
 
-.moveToTop {
+.move-to-top{
   bottom: 5rem;
   right: 1rem;
   width: 2.5rem;
@@ -24,7 +24,7 @@
   color: white;
 }
 
-.moveToBottom {
+.move-to-bottom {
   bottom: 2rem;
   right: 1rem;
   width: 2.5rem;
@@ -41,12 +41,12 @@
   color: white;
 }
 
-.moveToTop:hover {
+.move-to-top:hover {
   color: rgb(238, 238, 238);
   background: rgb(66, 71, 105);
 }
 
-.moveToBottom:hover {
+.move-to-bottom:hover {
   color: rgb(238, 238, 238);
   background: rgb(66, 71, 105);
 }
