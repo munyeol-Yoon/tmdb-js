@@ -1,3 +1,5 @@
+// 영화/tv시리즈에 대해 사용자가 남긴 리뷰 정보가 표시되는 detail page의 하단부 내용 구현하는 js 모듈 - 이혜진
+
 //DOM elements
 const reviewForm = document.getElementById("reviewForm");
 const nameInput = reviewForm["userName"];
