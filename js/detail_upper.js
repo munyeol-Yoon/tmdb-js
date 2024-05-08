@@ -6,7 +6,7 @@ let mediaInfos = {
   mediaType: "",
   posterPath: "",
   rating: 0,
-  $mediaTitle: "",
+  mediaTitle: "",
   overview: "",
   backdropPath: "",
   genreIds: [],
@@ -14,6 +14,7 @@ let mediaInfos = {
   actors: [],
   directors: [],
   directorCount: 0,
+  releaseDate: "",
 };
 
 // url 내 클릭한 미디어 ID 정보 가져오는 함수
@@ -38,6 +39,7 @@ const fetchMovieData = async (targetID) => {
 
   const response = await fetch(`https://api.themoviedb.org/3/movie/${parseInt(targetID)}?language=en-US`, options);
   const data = await response.json();
+  console.log(data);
   return data;
 };
 
@@ -131,11 +133,12 @@ const createDatabase = async () => {
 
     // 색출된 타겟 미디어에서 필요한 정보 추출해 사전에 선언해둔 MediaInfos 객체에 할당시킴
     // 추후 해당 객체 통해 html 구성
-    mediaInfos.$mediaTitle = rawData.infos.title;
+    mediaInfos.mediaTitle = rawData.infos.title;
     mediaInfos.posterPath = rawData.infos.poster_path;
     mediaInfos.rating = rawData.infos.vote_average.toFixed(1);
     mediaInfos.overview = rawData.infos.overview;
     mediaInfos.backdropPath = rawData.infos.backdrop_path;
+    mediaInfos.releaseDate = rawData.infos.release_date;
 
     rawData.infos.genres.forEach((genre) => {
       mediaInfos.genre.push(genre.name);
@@ -181,12 +184,13 @@ const createDatabase = async () => {
 
     // 색출된 타겟 미디어에서 필요한 정보 추출해 사전에 선언해둔 MediaInfos 객체에 할당시킴
     // 추후 해당 객체 통해 html 구성
-    mediaInfos.$mediaTitle = rawData.infos.name;
+    mediaInfos.mediaTitle = rawData.infos.name;
     mediaInfos.posterPath = rawData.infos.poster_path;
     mediaInfos.rating = rawData.infos.vote_average.toFixed(1);
     mediaInfos.overview = rawData.infos.overview;
     mediaInfos.backdropPath = rawData.infos.backdrop_path;
     mediaInfos.genreIds = rawData.infos.genre_ids;
+    mediaInfos.releaseDate = rawData.infos.first_air_date;
 
     rawData.infos.genres.forEach((genre) => {
       mediaInfos.genre.push(genre.name);
@@ -202,7 +206,7 @@ const createBackdropSection = () => {
   const $mediaRating = document.getElementById("rating");
   const $mediaGenre = document.getElementById("genres");
   $backdropWallpaper.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${mediaInfos.backdropPath})`;
-  $mediaTitle.innerText = `${mediaInfos.$mediaTitle}`;
+  $mediaTitle.innerText = `${mediaInfos.mediaTitle}`;
   $mediaRating.innerText = `${mediaInfos.rating} /10`;
 
   mediaInfos.genre.forEach((genre, index) => {
@@ -219,10 +223,17 @@ const createBackdropSection = () => {
 // 포스터 사진과 평점 section 내용 구현하는 함수
 const createPosterAndOverviewSection = () => {
   const $posterAndOverviewSection = document.getElementById("poster-and-overview");
-  $posterAndOverviewSection.innerHTML = `
+  if (mediaInfos.mediaType === "movie") {
+    $posterAndOverviewSection.innerHTML = `
     <img class = poster src="https://image.tmdb.org/t/p/w300${mediaInfos.posterPath}" onerror="this.onerror=null; this.src='/assets/blank_profile.png';">
-    <p class="overview">${mediaInfos.overview}</p>
-`;
+    <h class="overview">${mediaInfos.overview}
+    <p class="release-date">release date: ${mediaInfos.releaseDate}</p>`;
+  } else {
+    $posterAndOverviewSection.innerHTML = `
+    <img class = poster src="https://image.tmdb.org/t/p/w300${mediaInfos.posterPath}" onerror="this.onerror=null; this.src='/assets/blank_profile.png';">
+    <h class="overview">${mediaInfos.overview}
+    <p class="release-date">firse aired at: ${mediaInfos.releaseDate}</p>`;
+  }
 };
 
 // 제작진 및 배우 section 내용 구현하는 함수

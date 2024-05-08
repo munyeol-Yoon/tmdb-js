@@ -96,6 +96,8 @@ header a {
     height: 360px;
 }
 
+
+
 .movie-info-container {
     background-color:rgb(238, 238, 238);
     
@@ -118,12 +120,23 @@ header a {
     display: flex;
 }
 
+.release-date
+{
+    font-size:16pt;
+    text-align: end;
+    margin-right:10px;
+    margin-top: 40px;
+    font-weight: 500;
+    font-style: italic;
+}
+
 .overview {
     margin-top:auto;
     margin-bottom: auto;
     margin-left: 50px;
     margin-right: 30px;
     font-size: 28px;
+    text-align: justify;
 }
 
 .crew-info-container {
@@ -148,6 +161,8 @@ header a {
 
 .crew-image {
     width: 200px;
+    height: 300px;
+    object-fit: cover;
 }
 
 .crew-name {
