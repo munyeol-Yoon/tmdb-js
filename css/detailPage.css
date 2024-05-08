@@ -9,12 +9,9 @@ body {
 
 header {
   display: flex;
-  justify-content: space-between; /* 변경 */
+  justify-content: space-around;
   align-items: center;
-  height: 10vh;
-
-  max-width: 1140px; /* 변경 */
-  margin: auto; /* 변경 */
+  height: 8vh;
 }
 
 header > :nth-child(1) > a:hover {
@@ -103,8 +100,8 @@ header a {
 }
 
 .movie-info-container {
+  padding-top: 350px;
   background-color: rgb(238, 238, 238);
-
   border-radius: 20px;
 
   height: 500px;
@@ -123,12 +120,33 @@ header a {
   display: flex;
 }
 
+.release-date {
+  font-size: 16pt;
+  text-align: end;
+  margin-right: 10px;
+  margin-top: 50px;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 0px;
+}
+
+.runtime {
+  font-size: 16pt;
+  text-align: end;
+  margin-right: 10px;
+  margin-top: 5px;
+  font-weight: 500;
+  font-style: italic;
+}
+
 .overview {
+  padding-top: 5%;
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 50px;
   margin-right: 30px;
   font-size: 28px;
+  text-align: justify;
 }
 
 .crew-info-container {
@@ -181,53 +199,77 @@ header a {
   --darkerFrostyMint: rgb(108, 161, 164);
 }
 
-#reviewArea {
+#review-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0px auto 50px auto;
-  width: 50%;
-  max-height: 80%;
+  padding: 40px;
+  width: 1400px;
+  height: 300px;
   overflow-y: auto;
   background-color: var(--moonlight);
-
-  padding: 50px;
   border-radius: 20px;
+  gap: 0;
 }
 
-#reviewForm {
+#review-form {
   width: 100%;
   display: inline-block;
   display: flex;
   border-radius: 10px;
   margin: auto auto auto auto;
   justify-content: center;
-  gap: 5px;
+  gap: 2px;
 }
 
-#reviewForm input,
-#reviewForm textarea,
-#reviewForm button {
+#review-form input,
+#review-form textarea,
+#review-form button {
   display: block;
   border: 1px solid var(--moonlight);
   border-radius: 5px;
 }
 
-#reviewForm button {
+#review-form button {
   background-color: var(--frostymint);
   color: #fff;
   cursor: pointer;
   width: 10%;
 }
 
-#reviewForm button:hover {
+#review-form button:hover,
+.edit-btn:hover,
+.delete-btn:hover {
   background-color: var(--darkerFrostyMint);
 }
 
-.reviewItemDiv {
+.review-item-div {
   display: grid;
   grid-template-columns: 1fr 1fr 6fr 0.5fr 0.5fr;
   margin-bottom: 10px;
   background-color: var(--moonlight);
-  border: 3px solid var(--frostymint);
+  /* border: 2px solid var(--frostymint);  */
   border-radius: 10px;
+  width: 1200px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.review-item-div p {
+  margin-left: 30px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.edit-btn,
+.delete-btn {
+  border-radius: 10px;
+  width: 65px;
+  height: 55px;
+  border-color: var(--frostymint);
+  background-color: var(--frostymint);
+  color: var(--moonlight);
+  cursor: pointer;
 }
 
 .reviewItemDiv p {
