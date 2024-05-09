@@ -3,24 +3,19 @@ header {
   justify-content: center;
   height: 10vh;
   background-color: #222831;
-  box-shadow: 0 4px 2px -2px #22283180; /**/
+  box-shadow: 0 4px 2px -2px #222831b6;
 }
 
-header > :nth-child(1) > a:hover {
-  color: #76abae;
+.header-menu > :nth-child(1) > a:hover {
   font-weight: 900;
+  color: #76abae;
 }
 
-header > :nth-child(2) > a:hover {
-  color: #76abae;
-  font-weight: 900;
-}
-/**/
 .header-menu {
   display: flex;
   gap: 40px;
 }
-/**/
+
 .header-content {
   display: flex;
   justify-content: space-between;
