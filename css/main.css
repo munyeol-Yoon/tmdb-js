@@ -1,0 +1,157 @@
+/* Movies */
+
+.main-movie-card-container-scroll {
+  background: #31363f;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 500px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
+.main-movie-card-container-scroll::before,
+.main-movie-card-container-scroll::after {
+  background: linear-gradient(to right, black 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 500px;
+  position: absolute;
+  width: 350px;
+  z-index: 2;
+}
+
+.main-movie-card-container-scroll::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.main-movie-card-container-scroll::before {
+  z-index: 99;
+  left: 0;
+  top: 0;
+}
+
+/* 전체 길이 */
+.main-movie-card-container-scroll .main-movie-card-slide {
+  animation: movie-scroll 30s linear infinite;
+  display: flex;
+  width: calc((350px * 30));
+}
+
+.main-movie-card-container-scroll .main-movie-card-container-card {
+  height: 500px;
+  width: 350px;
+  padding-top: 20px;
+}
+
+.main-movie-card-container-scroll span {
+  position: absolute;
+  left: 10%;
+  top: 40%;
+  transform: translateX(-50%);
+  z-index: 999;
+  font-size: 24px;
+  color: white;
+  padding: 5px 10px;
+  font-size: 50px;
+}
+
+/* TVs */
+
+.main-tv-card-container-scroll {
+  background: #31363f;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 500px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
+.main-tv-card-container-scroll::before,
+.main-tv-card-container-scroll::after {
+  background: linear-gradient(to right, black 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 500px;
+  position: absolute;
+  width: 350px;
+  z-index: 2;
+}
+
+.main-tv-card-container-scroll::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.main-tv-card-container-scroll::before {
+  z-index: 99;
+  left: 0;
+  top: 0;
+}
+
+/* 전체 길이 */
+.main-tv-card-container-scroll .main-tv-card-slide {
+  animation: tv-scroll 30s linear infinite;
+  display: flex;
+  width: calc((350px * 30));
+}
+
+.main-tv-card-container-scroll .main-tv-card-container-card {
+  height: 500px;
+  width: 350px;
+  padding-top: 20px;
+}
+
+.main-tv-card-container-scroll span {
+  position: absolute;
+  left: 10%;
+  top: 40%;
+  transform: translateX(-50%);
+  z-index: 999;
+  font-size: 24px;
+  color: white;
+  padding: 5px 10px;
+  font-size: 50px;
+}
+
+@keyframes movie-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-350px * 20));
+  }
+}
+
+@keyframes tv-scroll {
+  0% {
+    transform: translateX(calc(-350px * 20));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .main-movie-card-container-scroll span {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .main-tv-card-container-scroll span {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .main-movie-card-container-scroll span {
+    left: 5%;
+    transform: translateX(-50%);
+  }
+  .main-tv-card-container-scroll span {
+    left: 5%;
+    transform: translateX(-50%);
+  }
+}

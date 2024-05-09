@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="/css/detailPage.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <a href="./index.html">
+          <img src="./assets/Logo.png" width="60" height="60" />
+        </a>
+      </div>
+      <div class="header-menu">
+        <a href="./movie.html?categoryKey=movie" class="movie-category"
+          >Movie</a
+        >
+        <a href="./tvs.html?categoryKey=tv" class="tv-category">TV</a>
+      </div>
+    </header>
+    <div class="detail-upper">
+      <section class="backdrop-container" id="backdrop-container">
+        <div class="backdrop-wallpaper" id="backdrop-wallpaper"></div>
+        <div class="backdrop-wallpaper-dim"></div>
+        <div class="title-rating-genres" id="title-rating-genres">
+          <p class="title" id="title"></p>
+          <p class="rating" id="rating"></p>
+          <span class="genres" id="genres"></span>
+        </div>
+      </section>
+      <section class="movie-info-container" id="movie-info-container">
+        <section class="poster-and-overview" id="poster-and-overview"></section>
+      </section>
+      <section class="crew-info-container" id="crew-info-container"></section>
+    </div>
+    <div class="detail-bottom">
+      <div id="review-area">
+        <form id="review-form">
+          <input
+            type="text"
+            id="user-name"
+            name="user-name"
+            placeholder="이름"
+            required
+          />
+          <input
+            type="number"
+            id="user-rating"
+            name="user-rating"
+            min="1"
+            max="10"
+            placeholder="⭐"
+            required
+          />
+          <input
+            type="password"
+            id="user-password"
+            name="user-password"
+            placeholder="4자리 비밀번호"
+            maxlength="4"
+            required
+          /><br />
+          <textarea
+            id="user-review"
+            name="user-review"
+            rows="3"
+            cols="50"
+            placeholder="리뷰를 작성하세요(50자 이내)"
+            required
+          ></textarea>
+          <button type="submit" id="submit-btn">등록</button>
+        </form>
+        <br /><br />
+        <div class="reviews"></div>
+      </div>
+    </div>
+    <script src="./js/detail_upper.js"></script>
+    <script src="./js/detail_bottom.js"></script>
+  </body>
+</html>

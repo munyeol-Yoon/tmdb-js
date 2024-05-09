@@ -1,17 +1,17 @@
 const container = document.querySelector(".container");
 let closeButton;
 
-export function displayModal(movieObj) {
+export function displayModal(dataObj) {
   container.innerHTML = "";
 
   const $modal = document.createElement("div");
   $modal.className = "modal";
 
   let modal = `
-    <h2>${movieObj.title}</h2>
-    <img src="${movieObj.img}" />
-    <p>${movieObj.overview}</p>
-    <p>Rating: ${movieObj.rating}</p>
+    <h2>${dataObj.title}</h2>
+    <img src="${dataObj.img}" />
+    <p>${dataObj.overview}</p>
+    <p>Rating: ${dataObj.rating}</p>
     <button class="close">Close</button>
   `;
 

@@ -1,20 +1,26 @@
 header {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  height: 10vh;
+  background-color: #222831;
+  box-shadow: 0 4px 2px -2px #222831b6;
+}
+
+.header-menu > :nth-child(1) > a:hover {
+  font-weight: 900;
+  color: #76abae;
+}
+
+.header-menu {
+  display: flex;
+  gap: 40px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 8vh;
-  border-bottom: 1px solid #d9d9d9;
-}
 
-header > :nth-child(1) > a:hover {
-  color: #48c9b0;
-}
-
-header > :nth-child(2) > a {
-  padding: 10px;
-  cursor: pointer;
-}
-
-header > :nth-child(2) > a:hover {
-  color: #48c9b0;
+  width: 100%;
+  max-width: 1140px;
 }

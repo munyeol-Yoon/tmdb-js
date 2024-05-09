@@ -4,46 +4,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/index.css" />
 
-    <title>Movie</title>
+    <title>EGGUZHO</title>
   </head>
   <body>
+    <!-- 헤더부분입니다.  -->
     <header>
-      <div>
-        <a href="./index.html">MY Flix</a>
-      </div>
-      <div>
-        <a class="movie-category">Movie</a>
-        <a class="tv-category">TV</a>
+      <div class="header-content">
+        <div>
+          <a href="./index.html">
+            <img src="./assets/Logo.png" width="60" height="60" />
+          </a>
+        </div>
+        <div class="header-menu">
+          <div class="form-container">
+            <a href="./movie.html?categoryKey=movie" class="movie-category"
+              >Movie</a
+            >
+            <a href="./tvs.html?categoryKey=tv" class="tv-category">TV</a>
+          </div>
+        </div>
       </div>
     </header>
     <main>
-      <div class="form-container">
-        <form class="search-form">
-          <label for="movie-search">Search : </label>
-          <input type="text" name="movie-search" id="movie-search" />
-          <button type="submit">Click</button>
-        </form>
-      </div>
-
-      <section class="card-container"></section>
-
-      <div class="container">
-        <div class="modal">
-          <h2>영화 제목</h2>
-          <p>모달내용 영화 상세 정보가 들어가야함</p>
-          <button class="close">Close</button>
-        </div>
-      </div>
-
-      <div class="pagination">
-        <button id="prevPage">Prev</button>
-        <span id="currentPage">1</span>
-        <button id="nextPage">Next</button>
-      </div>
+      <!-- card 가 들어가는 부분입니다. -->
+      <section class="main-movie-card-container">
+        <a href="./movie.html?categoryKey=movie">
+          <div class="main-movie-card-container-scroll scroll-element">
+            <span>영화</span>
+            <div class="main-movie-card-slide"></div>
+          </div>
+        </a>
+      </section>
+      <section class="main-tv-card-container">
+        <a href="./tvs.html?categoryKey=tv">
+          <div class="main-tv-card-container-scroll scroll-element">
+            <span>TV</span>
+            <div class="main-tv-card-slide"></div>
+          </div>
+        </a>
+      </section>
     </main>
-    <script src="./js/indexScript.js" type="module" defer></script>
+    <script src="./js/main.js" type="module" defer></script>
     <script src="./js/category.js" type="module" defer></script>
-    <script src="./js/modal.js" type="module" defer></script>
-    <script src="./js/pagination.js" type="module" defer></script>
   </body>
 </html>

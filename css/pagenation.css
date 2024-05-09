@@ -1,11 +1,12 @@
 .pagination {
-  border-top: 1px solid #d9d9d9;
-  padding: 15px 0 15px 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #222831;
+  color: white;
+  padding: 15px 0;
 }
 
-#currentPage {
-  padding: 0 15px 0 15px;
+#current-page {
+  padding: 0 15px;
 }

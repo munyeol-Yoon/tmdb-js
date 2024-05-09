@@ -2,9 +2,9 @@ import { options } from "./config.js";
 import { displayFindAllAndSearchResults } from "./findAllAndSearch.js";
 import { categoryStatus } from "./category.js";
 
-const $prevPageBtn = document.querySelector("#prevPage");
-const $nextPageBtn = document.querySelector("#nextPage");
-const $currentPage = document.querySelector("#currentPage");
+const $prevPageBtn = document.getElementById("prev-page");
+const $nextPageBtn = document.getElementById("next-page");
+const $currentPage = document.getElementById("current-page");
 
 let currentPage = 1;
 let isFetchingData = false;
